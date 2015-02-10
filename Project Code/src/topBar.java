@@ -13,7 +13,7 @@ public class topBar {
 	public topBar(){
 		menubar = new JMenuBar();
 		//menubar.setBackground(Color.BLUE);
-		JMenu menu = new JMenu();
+		JMenu menu = new JMenu("hello");
 		JMenuItem item = new JMenuItem("hello");
 		menu.add(item);
 		menu.add(item);
