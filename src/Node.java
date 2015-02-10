@@ -1,4 +1,3 @@
-package Map;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -52,14 +51,16 @@ public class Node {
 		return 10;
 	}
 	
-	public void mouseClicked(MouseEvent e) {
-	       System.out.println("Mouse clicked (# of clicks: "
-	                    + e.getClickCount() + ")");
-	       
-	       if(e.getClickCount() % 2 != 0){
-	    	   selectA = this;
-	       }
-	       else selectB = this;
-	    }
+	
+	// will be implemented elsewhere
+//	public void mouseClicked(MouseEvent e) {
+//	       System.out.println("Mouse clicked (# of clicks: "
+//	                    + e.getClickCount() + ")");
+//	       
+//	       if(e.getClickCount() % 2 != 0){
+//	    	   selectA = this;
+//	       }
+//	       else selectB = this;
+//	    }
 	
 }
