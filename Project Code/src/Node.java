@@ -11,6 +11,8 @@ public class Node {
 	private ArrayList<Node> neighbors = new ArrayList<Node>();
 	Point coord;
 	
+	HashMap<String, Integer> attractions = new HashMap<String,Integer>();
+	
 	Node selectA;
 	Node selectB;
 	
@@ -49,6 +51,10 @@ public class Node {
 	
 	public int attractiveness(){
 		return 10;
+	}
+	
+	public Integer addAttraction(String name, Integer rating){
+		return attractions.put(name, rating);
 	}
 	
 	
