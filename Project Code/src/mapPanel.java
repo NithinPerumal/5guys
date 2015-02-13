@@ -30,6 +30,7 @@ public class mapPanel extends JComponent {
 		Node city2 = new Node("testCity", new ArrayList<Node>(), 200, 200);
 		list.add(city2);
 		city2.draw(g2, 15);
+		
 	}
 
 	private class mouseListener implements MouseListener {
@@ -37,6 +38,7 @@ public class mapPanel extends JComponent {
 		public void mouseClicked(MouseEvent e) {
 			System.out.println(e.getLocationOnScreen().x + " "
 					+ e.getLocationOnScreen().y);
+			list.get(0).setColor(g2, Color.BLUE);
 			int x = e.getLocationOnScreen().x;
 			int y = e.getLocationOnScreen().y;
 			System.out.println(list.get(0).getXCoord());
@@ -46,8 +48,13 @@ public class mapPanel extends JComponent {
 					&& list.get(0).getYCoord() + 70 > y
 					&& list.get(0).getYCoord() +50 < y) {
 				System.out.println("here");
+				g2.setColor(Color.BLUE);
+				repaint();
 				list.get(0).draw(g2,15);
+				
 			}
+			
+			repaint();
 
 		}
 

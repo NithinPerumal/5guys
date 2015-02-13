@@ -10,6 +10,7 @@ public class Node {
 	String name;
 	private ArrayList<Node> neighbors = new ArrayList<Node>();
 	Point coord;
+	int radius;
 	
 	HashMap<String, Integer> attractions = new HashMap<String,Integer>();
 	
@@ -44,6 +45,7 @@ public class Node {
 	}
 	
 	public void draw(Graphics2D g, int radius){
+		this.radius = radius;
 		g.drawOval((int)this.getXCoord(), (int)this.getYCoord(), radius, radius);
 		g.setColor(Color.BLACK);
 		g.fillOval((int)this.getXCoord(), (int)this.getYCoord(), radius, radius);
@@ -57,10 +59,13 @@ public class Node {
 		return attractions.put(name, rating);
 	}
 	
-	public boolean setColor(Color color){
-		this.setColor(color);
-		return false;
+	public void setColor(Graphics2D g, Color color){
+		
+		g.setColor(color);
+		g.fillOval((int)this.getXCoord(), (int)this.getYCoord(), radius, radius);
+		
 	}
+	
 	
 	
 	// will be implemented elsewhere
