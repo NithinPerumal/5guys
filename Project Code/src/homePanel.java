@@ -12,7 +12,7 @@ public class homePanel {
 		side = new JPanel();
 		side.setBackground(Color.RED);
 		side.setPreferredSize(new Dimension(100,500));
-		JButton button = new JButton("Test");
-		side.add(button);
+		//JButton button = new JButton("Test");
+		//side.add(button);
 	}
 }
