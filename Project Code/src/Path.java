@@ -10,30 +10,16 @@ public class Path {
 	private double distanceEstimate;
 	private Node start;
 	private Node dest;
-	private ArrayList<Node>neighbors;
 	
-	public Path(Node starter, Node goal){
-		distanceEstimate=estimate();
+	public Path(Node starter, Node goal, double estimate){
+		distanceEstimate=estimate;
 		start=starter;
 		dest=goal;
-		neighbors=start.getNeighbors();
-		
-	}
-	private double estimate(){
-		Point a=start.getCoord();
-		Point b= dest.getCoord();
-		return a.distance(b);
-		
-	}
-	public void createPaths(){
-		for(Node p:neighbors){
-			
-		}
-	
-	}
-	public Node bestPath(){
-		return null;
 	}
 	
+	
+	public double getDCost(){
+		return this.distanceEstimate;
+	}
 
 }
