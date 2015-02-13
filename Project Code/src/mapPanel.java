@@ -1,7 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -17,6 +16,8 @@ public class mapPanel extends JComponent {
 		mouseListener mouse = new mouseListener();
 		list = new ArrayList<Node>();
 		this.addMouseListener(mouse);
+		Node city2 = new Node("testCity", new ArrayList<Node>(), 200, 200);
+		list.add(city2);
 	}
 
 	@Override
@@ -25,35 +26,21 @@ public class mapPanel extends JComponent {
 		g2 = (Graphics2D) g;
 		g2.setColor(Color.green);
 		g.fillRect(0, 0, getWidth(), getHeight());
-		g.setColor(getForeground());
-		// g2.fill(new Rectangle(900, 500));
-		Node city2 = new Node("testCity", new ArrayList<Node>(), 200, 200);
-		list.add(city2);
-		city2.draw(g2, 15);
+		list.get(0).draw(g2, 15);
 		
 	}
 
 	private class mouseListener implements MouseListener {
 
 		public void mouseClicked(MouseEvent e) {
-			System.out.println(e.getLocationOnScreen().x + " "
-					+ e.getLocationOnScreen().y);
-			list.get(0).setColor(g2, Color.BLUE);
 			int x = e.getLocationOnScreen().x;
 			int y = e.getLocationOnScreen().y;
-			System.out.println(list.get(0).getXCoord());
-			System.out.println(list.get(0).getYCoord());
 			if (list.get(0).getXCoord() + 30 > x
 					&& list.get(0).getXCoord()  < x
 					&& list.get(0).getYCoord() + 70 > y
 					&& list.get(0).getYCoord() +50 < y) {
-				System.out.println("here");
-				g2.setColor(Color.BLUE);
-				repaint();
-				list.get(0).draw(g2,15);
-				
+				list.get(0).setColor(g2, Color.BLUE);
 			}
-			
 			repaint();
 
 		}

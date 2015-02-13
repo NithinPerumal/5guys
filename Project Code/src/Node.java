@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,6 +12,8 @@ public class Node {
 	private ArrayList<Node> neighbors = new ArrayList<Node>();
 	Point coord;
 	int radius;
+	private Ellipse2D.Double dot;
+	private Color color = Color.BLACK;
 	
 	HashMap<String, Integer> attractions = new HashMap<String,Integer>();
 	
@@ -46,9 +49,9 @@ public class Node {
 	
 	public void draw(Graphics2D g, int radius){
 		this.radius = radius;
-		g.drawOval((int)this.getXCoord(), (int)this.getYCoord(), radius, radius);
-		g.setColor(Color.BLACK);
-		g.fillOval((int)this.getXCoord(), (int)this.getYCoord(), radius, radius);
+		dot = new Ellipse2D.Double(this.getXCoord(), this.getYCoord(), radius, radius);
+		g.setColor(color);
+		g.fill(dot);
 	}
 	
 	public int attractiveness(){
@@ -59,24 +62,17 @@ public class Node {
 		return attractions.put(name, rating);
 	}
 	
-	public void setColor(Graphics2D g, Color color){
-		
-		g.setColor(color);
-		g.fillOval((int)this.getXCoord(), (int)this.getYCoord(), radius, radius);
-		
+	public void setColor(Graphics2D g, Color newColor){
+		color = newColor;
 	}
 	
+	public Ellipse2D.Double getShape(){
+		return dot;
+	}
 	
+	public Color getColor(){
+		return color;
+	}
 	
-	// will be implemented elsewhere
-//	public void mouseClicked(MouseEvent e) {
-//	       System.out.println("Mouse clicked (# of clicks: "
-//	                    + e.getClickCount() + ")");
-//	       
-//	       if(e.getClickCount() % 2 != 0){
-//	    	   selectA = this;
-//	       }
-//	       else selectB = this;
-//	    }
 	
 }
