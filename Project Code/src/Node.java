@@ -57,6 +57,11 @@ public class Node {
 		return attractions.put(name, rating);
 	}
 	
+	public boolean setColor(Color color){
+		this.setColor(color);
+		return false;
+	}
+	
 	
 	// will be implemented elsewhere
 //	public void mouseClicked(MouseEvent e) {
