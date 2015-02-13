@@ -1,5 +1,6 @@
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * shits about to go down here bois
@@ -11,6 +12,8 @@ public class Route {
 	private Node dest;
 	private double dEstimate;
 	private ArrayList<Node>neighbors;
+	private ArrayList<Path> paths;
+	
 	
 	
 	public Route(Node starter, Node finish){		
@@ -21,6 +24,15 @@ public class Route {
 	}
 	public void createPaths(){
 		for(Node p:neighbors){
+			Path path = new Path(start, p, estimate());
+			paths.add(path);
+			/**
+			 * 	Call best path
+			 * 	return dest node of greatest path to take
+			 * 	while ret(best path) != dest route
+			 * 		bestpath() with start moved to the ret(best path)
+			 * 	should return the priority queue of nodes to go to
+			 */
 			
 		}
 	
@@ -32,6 +44,9 @@ public class Route {
 		
 	}
 	public Node bestPath(){
+		
+		
+		
 		return null;
 	}
 	
