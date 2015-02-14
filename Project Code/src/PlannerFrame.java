@@ -19,6 +19,9 @@ public class PlannerFrame {
 		mapP.setBackground(Color.GREEN);
 		back.add(mapP, BorderLayout.CENTER);
 		
+//		tripPlannerPanel home = new tripPlannerPanel();
+//		back.add(home.side, BorderLayout.LINE_END);
+		
 		homePanel home = new homePanel();
 		back.add(home.side, BorderLayout.LINE_END);
 		
