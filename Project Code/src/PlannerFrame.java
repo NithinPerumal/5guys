@@ -19,11 +19,17 @@ public class PlannerFrame {
 		mapP.setBackground(Color.GREEN);
 		back.add(mapP, BorderLayout.CENTER);
 		
-//		tripPlannerPanel home = new tripPlannerPanel();
+//		tripPlannerPanel trip = new tripPlannerPanel();
+//		back.add(trip.side, BorderLayout.LINE_END);
+		
+//		homePanel home = new homePanel();
 //		back.add(home.side, BorderLayout.LINE_END);
 		
-		homePanel home = new homePanel();
-		back.add(home.side, BorderLayout.LINE_END);
+//		search1Panel search1 = new search1Panel();
+//		back.add(search1.side, BorderLayout.LINE_END);
+		
+		search2panel search2 = new search2panel();
+		back.add(search2.side, BorderLayout.LINE_END);
 		
 		
 		topBar menuBar = new topBar();
