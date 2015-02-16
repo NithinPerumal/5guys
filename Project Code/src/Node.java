@@ -26,6 +26,10 @@ public class Node {
 		
 	}
 	
+	public Node(ArrayList<String> neightbors, int x, int y){
+		
+	}
+	
 	public ArrayList<Node> getNeighbors(){
 		return neighbors;
 	}
