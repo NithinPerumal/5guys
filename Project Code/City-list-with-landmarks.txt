@@ -1,4 +1,3 @@
-									//City
 Bangalore	150	200	Lal-Bagh	Cubbon-Park
 **
 Chennai		290	160	Marina-Beach	Andavar-Temple
@@ -12,4 +11,4 @@ Hyderabad	250	200	Charminar
 Delhi		300	350	Quatab-Minar	
 **
 Amritsar	400	300	Golden-Temple
-
+**
