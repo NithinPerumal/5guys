@@ -13,6 +13,11 @@ public class Node {
 	int radius;
 	private Ellipse2D.Double dot;
 	private Color color = Color.BLACK;
+	private String cityName;
+	private ArrayList<String> landmarks = new ArrayList<String>();
+	private ArrayList<String> Stringneighbours = new ArrayList<String>();
+	private int x;
+	private int y;
 	
 	HashMap<String, Integer> attractions = new HashMap<String,Integer>();
 	
@@ -23,6 +28,15 @@ public class Node {
 		this.name = name;
 		coord = new Point(x,y);
 		neighbors.add(this);
+		
+	}
+	
+	public Node(String cityName, ArrayList<String> landmarks, ArrayList<String> neighbours, int x, int y){
+		this.cityName = cityName;
+		this.landmarks = landmarks;
+		this.Stringneighbours = neighbours;
+		this.x = x;
+		this.y = y;
 		
 	}
 	
