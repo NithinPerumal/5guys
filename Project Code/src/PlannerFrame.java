@@ -2,6 +2,8 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,7 +17,16 @@ public class PlannerFrame {
 		JPanel back = new JPanel();
 		back.setLayout(new BorderLayout());
 		
-		mapPanel mapP = new mapPanel();
+		Reader newReader = new Reader();
+		try {
+			newReader.TextReader();
+		} catch (IOException e) {
+			// Done Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<Node> cities = newReader.cities;
+		
+		mapPanel mapP = new mapPanel(cities);
 		mapP.setBackground(Color.GREEN);
 		back.add(mapP, BorderLayout.CENTER);
 		
