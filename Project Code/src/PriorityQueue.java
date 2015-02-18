@@ -119,18 +119,19 @@ public class PriorityQueue<Object> extends ArrayList<Object> {
 	 * @param element
 	 * @return if successful
 	 */
-	// public boolean remove(Object element) {
-	// if (super.contains(element)) {
-	// int spot = super.indexOf(element);
-	// super.set(spot, super.get(super.size() - 1));
-	// super.remove(super.size() - 1);
-	// if (super.size() > 1)
-	// percolateDown(spot);
-	// return true;
-	// } else
-	// return false;
-	//
-	// }
+	public boolean remove(Path element) {
+		if (super.contains(element)) {
+			int spot = super.indexOf(element);
+			super.set(spot, super.get(super.size() - 1));
+			super.remove(super.size() - 1);
+			if (super.size() > 1)
+				percolateDown(spot);
+			size--;
+			return true;
+		} else
+			return false;
+
+	}
 
 	/**
 	 * adds the element to the queue
