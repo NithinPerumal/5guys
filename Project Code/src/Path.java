@@ -10,16 +10,30 @@ public class Path {
 	private double distanceEstimate;
 	private Node start;
 	private Node dest;
+	private double distance;
 	
 	public Path(Node starter, Node goal, double estimate){
 		distanceEstimate=estimate;
 		start=starter;
 		dest=goal;
+		distance=setDistance();
 	}
 	
 	
 	public double getDCost(){
 		return this.distanceEstimate;
+	}
+
+
+	public double getDistance(){
+		return this.distance;
+	}
+	public String getGoalName(){
+		return this.dest.name;
+	}
+	private double setDistance(){
+	return	dest.getDistance(start);
+		
 	}
 
 }
