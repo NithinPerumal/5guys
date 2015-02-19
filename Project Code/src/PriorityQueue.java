@@ -27,7 +27,6 @@ public class PriorityQueue<Object> extends ArrayList<Object> {
 		return true;
 	}
 
-	// THIS IS UNFINISHED I JUST IMPORTED THE BINARY HEAP FROM EARL
 	/**
 	 * after removing elements this resorts the queue
 	 * 

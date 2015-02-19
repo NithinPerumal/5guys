@@ -23,9 +23,10 @@ public class Route {
 		dEstimate=estimate();
 	}
 	public void createPaths(){
+		PriorityQueue<Object>router=new PriorityQueue<Object>();
 		for(Node p:neighbors){
 			Path path = new Path(start, p, estimate());
-			paths.add(path);
+			router.add(path);
 			/**
 			 * 	Call best path
 			 * 	return dest node of greatest path to take
@@ -33,8 +34,9 @@ public class Route {
 			 * 		bestpath() with start moved to the ret(best path)
 			 * 	should return the priority queue of nodes to go to
 			 */
-			
 		}
+	    Path checker=	router.poll();
+		
 	
 	}
 	private double estimate(){
