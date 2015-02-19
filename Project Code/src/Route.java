@@ -25,7 +25,7 @@ public class Route {
 	public void createPaths(){
 		PriorityQueue<Object>router=new PriorityQueue<Object>();
 		for(Node p:neighbors){
-			Path path = new Path(start, p, estimate());
+			Path path = new Path(start, p, estimate(), 0);
 			router.add(path);
 			/**
 			 * 	Call best path
