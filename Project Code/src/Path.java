@@ -31,6 +31,9 @@ public class Path {
 	public String getGoalName(){
 		return this.dest.name;
 	}
+	public Node getGoalNode(){
+		return this.dest;
+	}
 	private double setDistance(){
 	return	dest.getDistance(start);
 		
