@@ -24,6 +24,7 @@ public class Route {
 		neighbors = start.getNeighbors();
 		dEstimate = estimate();
 	}
+<<<<<<< HEAD
 
 	public void createPaths() {
 		PriorityQueue<Object> router = new PriorityQueue<Object>();
@@ -43,6 +44,20 @@ public class Route {
 			checker = router.poll().getGoalNode();
 			completeRoute.add(checker);
 			router.clear();
+=======
+	public void createPaths(){
+		PriorityQueue<Object>router=new PriorityQueue<Object>();
+		for(Node p:neighbors){
+			Path path = new Path(start, p, estimate(), 0);
+			router.add(path);
+			/**
+			 * 	Call best path
+			 * 	return dest node of greatest path to take
+			 * 	while ret(best path) != dest route
+			 * 		bestpath() with start moved to the ret(best path)
+			 * 	should return the priority queue of nodes to go to
+			 */
+>>>>>>> origin/master
 		}
 
 	}
