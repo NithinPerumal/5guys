@@ -4,20 +4,30 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public class mapPanel extends JComponent {
 	ArrayList<Node> list;
+	HashMap<Node, ArrayList<Node>> neighborsMap;
 	Graphics2D g2;
 	Node select1;
 	Node select2;
 
-	public mapPanel(ArrayList<Node> cities) {
+	public mapPanel(ArrayList<Node> cities, HashMap<Node, ArrayList<Node>> neighborMap) {
 		mouseListener mouse = new mouseListener();
 		list = cities;
+		neighborsMap = neighborMap;
 		this.addMouseListener(mouse);
+	}
+	
+	public ArrayList<Node> getSelect(){
+		ArrayList<Node> selection = new ArrayList<Node>();
+		selection.add(select1);
+		selection.add(select2);
+		return selection;
 	}
 
 	@Override
@@ -27,6 +37,11 @@ public class mapPanel extends JComponent {
 		g2.setColor(Color.green);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		for (int i=0; i<list.size(); i++){
+			ArrayList<Node> neighbors = neighborsMap.get(list.get(i));
+			for (int j=0; j<neighbors.size(); j++){
+				g2.setColor(Color.black);
+				g.drawLine((int)list.get(i).getXCoord()+7, (int)list.get(i).getYCoord()+10, (int)neighbors.get(j).getXCoord()+7, (int)neighbors.get(j).getYCoord()+10);
+			}
 			list.get(i).draw(g2, 15);
 			g.drawString(list.get(i).name, (int)list.get(i).getXCoord(), (int)list.get(i).getYCoord() + 30);
 		}

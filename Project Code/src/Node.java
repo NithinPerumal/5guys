@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class Node {
 	String name;
-	public ArrayList<Node> neighbors = new ArrayList<Node>();
+	ArrayList<Node> neighbors = new ArrayList<Node>();
 	Point coord;
 	int radius;
 	private Ellipse2D.Double dot;

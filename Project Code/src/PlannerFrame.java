@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
@@ -27,21 +28,20 @@ public class PlannerFrame {
 			// Done Auto-generated catch block
 			e.printStackTrace();
 		}
-		ArrayList<Node> cities = newReader.cities;
+		final ArrayList<Node> cities = newReader.cities;
+		HashMap<Node, ArrayList<Node>> neighborMap = newReader.neighbormap;
 		
 		final JPanel sidePanel = new JPanel();
 		
-		homePanel home = new homePanel();
+		homePanel home = new homePanel(cities);
 		sidePanel.add(home.side);
 		back.add(sidePanel, BorderLayout.LINE_END);
 		
 		ActionListener topBarListener = new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				System.out.println("Top Bar");
 				JMenuItem topBarName = (JMenuItem) e.getSource();
 				String name = topBarName.getText();
 				if (name == "Trip Planner"){
-					System.out.println("Got Name");
 					tripPlannerPanel trip = new tripPlannerPanel();
 					back.remove(sidePanel);
 					sidePanel.removeAll();
@@ -50,7 +50,6 @@ public class PlannerFrame {
 					back.validate();
 				}
 				if (name == "City"){
-					System.out.println("Got Name");
 					search1Panel search1 = new search1Panel();
 					back.remove(sidePanel);
 					sidePanel.removeAll();
@@ -59,8 +58,7 @@ public class PlannerFrame {
 					back.validate();
 				}
 				if (name == "Home"){
-					System.out.println("Got Name");
-					homePanel home = new homePanel();
+					homePanel home = new homePanel(cities);
 					back.remove(sidePanel);
 					sidePanel.removeAll();
 					sidePanel.add(home.side);
@@ -68,7 +66,6 @@ public class PlannerFrame {
 					back.validate();
 				}
 				if (name == "Path"){
-					System.out.println("Got Name");
 					search2panel search2 = new search2panel();
 					back.remove(sidePanel);
 					sidePanel.removeAll();
@@ -80,7 +77,7 @@ public class PlannerFrame {
 		};
 		
 		
-		mapPanel mapP = new mapPanel(cities);
+		mapPanel mapP = new mapPanel(cities, neighborMap);
 		mapP.setBackground(Color.GREEN);
 		back.add(mapP, BorderLayout.CENTER);
 		
