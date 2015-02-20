@@ -38,17 +38,17 @@ public class PriorityQueue<Object> extends ArrayList<Object> {
 			int lspot = ((spot + 1) * 2) - 1;
 			int rspot = (spot + 1) * 2;
 			if (rspot <= super.size() - 1) {
-				Route lelement = (Route) super.get(lspot);
-				Route relement = (Route) super.get(rspot);
-				Route element = (Route) super.get(spot);
+				Path lelement = (Path) super.get(lspot);
+				Path relement = (Path) super.get(rspot);
+				Path element = (Path) super.get(spot);
 
-				if (element.getCost() > lelement.getCost()
-						|| element.getCost() > relement.getCost()) {
+				if (element.getDistance() > lelement.getDistance()
+						|| element.getDistance() > relement.getDistance()) {
 
-					if (relement.getCost() < lelement.getCost()) {
+					if (relement.getDistance() < lelement.getDistance()) {
 						super.set(spot, (Object) relement);
 						super.set(rspot, (Object) element);
-					} else if (relement.getCost() > lelement.getCost()) {
+					} else if (relement.getDistance() > lelement.getDistance()) {
 
 					} else {
 						return;
@@ -68,8 +68,8 @@ public class PriorityQueue<Object> extends ArrayList<Object> {
 	public void percolateUp(int index) {
 
 		int parentIndex = ((index / 2) + (index % 2) - 1);
-		Route parent = (Route) super.get(parentIndex);
-		if (parent.getCost() > ((Route) super.get(index)).getCost()) {
+		Path parent = (Path) super.get(parentIndex);
+		if (parent.getDistance() > ((Path) super.get(index)).getDistance()) {
 			super.set(parentIndex, super.get(index));
 			super.set(index, (Object) parent);
 			if (parentIndex > 0)
@@ -82,10 +82,10 @@ public class PriorityQueue<Object> extends ArrayList<Object> {
 	 * 
 	 * @return
 	 */
-	public Route peek() {
+	public Path peek() {
 		if (super.size() == 0)
 			return null;
-		return (Route) super.get(0);
+		return (Path) super.get(0);
 
 	}
 
@@ -98,15 +98,15 @@ public class PriorityQueue<Object> extends ArrayList<Object> {
 	 * 
 	 * @return first element
 	 */
-	public Route poll() {
+	public Path poll() {
 		if (this.size() == 0)
 			return null;
 		if (this.size() > 2) {
-			Route tempor = (Route) super.get(1);
+			Path tempor = (Path) super.get(1);
 			super.set(1, super.get(2));
 			super.set(2, (Object) tempor);
 		}
-		Route temp = (Route) super.get(0);
+		Path temp = (Path) super.get(0);
 		remove(temp);
 		return temp;
 
@@ -118,7 +118,7 @@ public class PriorityQueue<Object> extends ArrayList<Object> {
 	 * @param element
 	 * @return if successful
 	 */
-	public boolean remove(Route element) {
+	public boolean remove(Path element) {
 		if (super.contains(element)) {
 			int spot = super.indexOf(element);
 			super.set(spot, super.get(super.size() - 1));

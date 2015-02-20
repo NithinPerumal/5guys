@@ -47,7 +47,7 @@ public class Route {
 		return this.cost;
 	}
 
-	public void createPaths() {
+	public ArrayList<Node> createPaths() {
 		
 		
 		for(Node n : neighbors){
@@ -57,28 +57,37 @@ public class Route {
 		
 		
 		
-//		PriorityQueue<Object> router = new PriorityQueue<Object>();
-//		Queue<Node> completeRoute = new LinkedList<Node>();
-//		Node checker = this.start;
-//		ArrayList<Double> curDistances = new ArrayList<Double>();
-////		double totalDist = 0;
-//		while (!checker.name.equals( dest.name) ) {  // while you do not check yourself
-//			for (Node p : neighbors) {  // for each node in neighbors
-////				Path path = new Path(start, p, estimate(), 10, 7);  // third and fourth are from text doc
-////				
-////				if(p.getDistance(dest) < this.estimate()){  // prevent from going in opposite direction
-////					router.add(path);
-////				}				
-//				/**
-//				 * Call best path return dest node of greatest path to take
-//				 * while ret(best path) != dest route bestpath() with start
-//				 * moved to the ret(best path) should return the priority queue
-//				 * of nodes to go to
-//				 */
+		PriorityQueue<Object> router = new PriorityQueue<Object>();
+		ArrayList<Node> completeRoute = new ArrayList<Node>();
+		Node checker = this.start;
+		ArrayList<Double> curDistances = new ArrayList<Double>();
+//		double totalDist = 0;
+		while (!checker.name.equals( dest.name) ) {  // while you do not check yourself
+			for (Node p : neighbors) {  // for each node in neighbors
+				Path path = new Path(start, p, estimate(), 10, 7);  // third and fourth are from text doc
 //				
-//				
-//			}
-//			
+				if(p.getDistance(dest) < this.estimate()){  // prevent from going in opposite direction
+					router.add(path);
+				}				
+				
+				/**
+				 * Call best path return dest node of greatest path to take
+				 * while ret(best path) != dest route bestpath() with start
+				 * moved to the ret(best path) should return the priority queue
+				 * of nodes to go to
+				 */
+				
+				
+				
+			}
+			
+			checker = router.poll().getGoalNode();  // changes which one is the current node to be checked and pops off the one on top
+			completeRoute.add(checker);  // adds the current checked one to the complete route
+			router.clear();  // clears the router
+
+			
+		}
+			
 //			if(router.peek().getStart() == this.start){  // if this is the start location
 ////				ArrayList<Node> 
 //				for(Object p : router){  // for each of the first starting paths
@@ -139,7 +148,7 @@ public class Route {
 ////			totalDist += completeRoute.peek().getDistance(neighbor)
 //			
 //		}
-
+		return completeRoute;
 	}
 
 	private double estimate() {
