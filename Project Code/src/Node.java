@@ -18,6 +18,8 @@ public class Node {
 	private ArrayList<String> Stringneighbours = new ArrayList<String>();
 	private int x;
 	private int y;
+	HashMap<Node, Integer> distMap = new HashMap<Node, Integer>();
+	int interest;
 	
 	HashMap<String, Integer> attractions = new HashMap<String,Integer>();
 	
