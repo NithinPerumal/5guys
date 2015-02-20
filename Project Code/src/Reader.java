@@ -15,24 +15,17 @@ public class Reader {
 			e.printStackTrace();
 		}
 
-		// for (int i = 0; i < newReader.cities.size(); i++) {
-		// System.out.println("cities: " + newReader.cities.get(i).name);
-		// }
-		// System.out.println("landmarks size: " + newReader.landmarks.size());
-		// for (int i = 0; i < newReader.landmarks.size(); i++) {
-		// System.out.println("landmarks " + newReader.landmarks.get(i));
-		// }
-		// System.out.println("x: " + newReader.x);
-		// System.out.println("y: " + newReader.y);
-
-		// System.out.println(newReader.neighbormap.keySet());
-		int count = 1;
-		for (Node name : newReader.neighbormap.keySet()) {
-			System.out.println(count);
-			String key = name.name;
-			String value = newReader.neighbormap.get(name).toString();
-			System.out.println(key + ":" + value);
-			count++;
+//		int count = 1;
+//		for (Node name : newReader.neighbormap.keySet()) {
+////			System.out.println(count);
+//			String key = name.name;
+//			String value = newReader.neighbormap.get(name).toString();
+////			System.out.println(key + " : " + value);
+//			count++;
+//		}
+		for (int i=0; i< newReader.cities.size(); i++){
+			System.out.println("City: " + newReader.cities.get(i).name);
+			System.out.println("Neighbors: " + newReader.cities.get(i).neighbors.toString());
 		}
 	}
 
@@ -98,30 +91,59 @@ public class Reader {
 		System.out.println("just inside br2");
 		while ((line2 = br2.readLine()) != null) {
 			String[] tokens = line2.split("\\s+");
-			if (line2.equals("**")) {
+			if (!line2.equals("**")) {
 				// DO Nothing yet
-			}
-//			System.out.println("cities size: " + this.cities.size());
-			for (int i = 0; i < this.cities.size(); i++) {
-				if (tokens[0].equals(this.cities.get(i).name)) {
-					for (int k = 1; k < tokens.length; k++) {
-						for (int m = 0; m < cities.size(); m++) {
-							if (cities.get(m).name.equals(tokens[k])) {
-//								System.out.println("check executed");
-								this.neighbours.add(cities.get(i));
+				// System.out.println("cities size: " + this.cities.size());
+				// System.out.println("CITYSIZE: " + cities.size());
+				for (int i = 1; i < tokens.length; i++) {
+					for (int j = 0; j < this.cities.size(); j++) {
+//						System.out.println("J: " + j);
+						if (tokens[0].equals(cities.get(j).name)) {
+							for (int k = 0; k < this.cities.size(); k++) {
+//								System.out.println("tokens[i] " + tokens[i]);
+//								System.out.println("cities: "
+//										+ cities.get(k).toString());
+								if (tokens[i].equals(cities.get(k).toString())) {
+//									System.out.println("hihi");
+									this.neighbours.add(cities.get(k));
+								}
+								// if(this.neighbours.contains(cities.get(j))){
+								// continue;
+								// }
 							}
 						}
 					}
-				}
-				
-				this.neighbormap.put(cities.get(i), this.neighbours);
-//				 System.out.println(cities.get(i).toString());
-//				 System.out.println("neighbours" + neighbours.toString());
-			}
+//					 System.out.println("neighbours " +
+//					 neighbours.toString());
+					// System.out.println("1");
+//					System.out.println(cities.get(i).name);
+//					System.out.println("size of neighbor "
+//							+ this.neighbormap.get(cities.get(i)).size());
 
+					// System.out.println(cities.get(i).toString());
+
+				}
+//				System.out.println(this.neighbours.toString());
+				for (int l=0; l<this.cities.size(); l++){
+					if (tokens[0].equals(cities.get(l).name)){
+						System.out.println("City:" + cities.get(l).name);
+						cities.get(l).neighbors = this.neighbours;
+						System.out.println("Neighbors: " + cities.get(l).neighbors.toString());
+						this.neighbormap.put(cities.get(l), this.neighbours);
+						System.out.println(this.neighbormap.containsKey(cities.get(l)));
+					}
+				}
+
+				// System.out.println(neighbours.size());
+//				System.out.println(this.neighbormap.get(cities.get(0)) + " asdafwregwa");
+				this.neighbours = new ArrayList<Node>();
+//				System.out.println(this.neighbormap.get(cities.get(0)) + " asdafwregwa");
+				// System.out.println("neighbours " + neighbours.toString());
+			}
 			// System.out.println(this.neighbours.toString());
-//			 this.neighbours = new ArrayList<Node>();
+			// this.neighbours = new ArrayList<Node>();
 		}
+
 		br2.close();
 	}
 
