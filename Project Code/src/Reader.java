@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.HashMap;
 
 public class Reader {
 
@@ -14,34 +14,44 @@ public class Reader {
 			// Done Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		for (int i = 0; i < newReader.neighbours.size(); i++) {
-			System.out.println("neighbours "+ newReader.neighbours.get(i));
+
+		// for (int i = 0; i < newReader.cities.size(); i++) {
+		// System.out.println("cities: " + newReader.cities.get(i).name);
+		// }
+		// System.out.println("landmarks size: " + newReader.landmarks.size());
+		// for (int i = 0; i < newReader.landmarks.size(); i++) {
+		// System.out.println("landmarks " + newReader.landmarks.get(i));
+		// }
+		// System.out.println("x: " + newReader.x);
+		// System.out.println("y: " + newReader.y);
+
+		// System.out.println(newReader.neighbormap.keySet());
+		int count = 1;
+		for (Node name : newReader.neighbormap.keySet()) {
+			System.out.println(count);
+			String key = name.name;
+			String value = newReader.neighbormap.get(name).toString();
+			System.out.println(key + ":" + value);
+			count++;
 		}
-		System.out.println(newReader.landmarks.size());
-		for (int i = 0; i < newReader.landmarks.size(); i++) {
-			System.out.println("landmarks " + newReader.landmarks.get(i));
-		}		
-		System.out.println("x: " + newReader.x);
-		System.out.println("y: " + newReader.y);
-		
 	}
-	
-	ArrayList<String> neighbours;
+
+	ArrayList<Node> neighbours;
 	ArrayList<String> landmarks;
 	int x;
 	int y;
 	ArrayList<Node> cities;
 	String name;
-	
+	HashMap<Node, ArrayList<Node>> neighbormap = new HashMap<Node, ArrayList<Node>>();
+
 	public Reader() {
-		neighbours = new ArrayList<String>();
+		neighbours = new ArrayList<Node>();
 		landmarks = new ArrayList<String>();
 		int x = 0;
 		int y = 0;
 		this.cities = new ArrayList<Node>();
 	}
-	
+
 	public void TextReader() throws IOException {
 		BufferedReader br;
 		br = new BufferedReader(new FileReader("City-list-with-landmarks.txt"));
@@ -52,55 +62,67 @@ public class Reader {
 			String[] tokens = line.split("\\s+");
 			if (line.equals("**")) {
 				// DO Nothing yet
-			} 
-			else if (line.charAt(0) != '*') {
+			} else if (line.charAt(0) != '*') {
 				String name = tokens[0];
 				this.name = name;
-//				ArrayList<String> neighbours = new ArrayList<String>();
-//				ArrayList<String> landmarks = new ArrayList<String>();
-//				System.out.println(name);
 				int j = 1;
-//				System.out.println(tokens.length);
-				while (tokens[j].charAt(0) != '0' && tokens[j].charAt(0) != '1'
-						&& tokens[j].charAt(0) != '2'
-						&& tokens[j].charAt(0) != '3'
-						&& tokens[j].charAt(0) != '4'
-						&& tokens[j].charAt(0) != '5'
-						&& tokens[j].charAt(0) != '6'
-						&& tokens[j].charAt(0) != '7'
-						&& tokens[j].charAt(0) != '8'
-						&& tokens[j].charAt(0) != '9') {
-//					System.out.println(j);
-					neighbours.add(tokens[j]);
-//					System.out.println(tokens[j]);
-//					System.out.println(j);
-//					System.out.println(tokens[j].charAt(0) != '1');
-					j++;
-				}
 				this.x = Integer.parseInt(tokens[j]);
-//				System.out.println(x);
 				j++;
 				this.y = Integer.parseInt(tokens[j]);
-//				System.out.println(y);
 				j++;
-//				System.out.println(j);
 				while (j < tokens.length) {
 					landmarks.add(tokens[j]);
-//					System.out.println(landmarks.get(j));
 					j++;
 				}
 			}
-			Node city = new Node(this.name, this.landmarks, this.neighbours, this.x, this.y);
-			this.cities.add(city);
-			this.name = "";
-			this.landmarks = new ArrayList<String>();
-			this.neighbours = new ArrayList<String>();
-			this.x = 0;
-			this.y = 0;
-			
+			if (this.name.length() != 0) {
+				Node city = new Node(this.name, this.landmarks, null, this.x,
+						this.y);
+
+				// System.out.println("    ");
+				this.cities.add(city);
+
+				this.name = "";
+				this.landmarks = new ArrayList<String>();
+				// this.neighbours = new ArrayList<String>();
+				this.x = 0;
+				this.y = 0;
+			}
+
 		}
 		br.close();
+
+		BufferedReader br2;
+		br2 = new BufferedReader(new FileReader("Neighbours.txt"));
+		String line2 = "";
+		System.out.println("just inside br2");
+		while ((line2 = br2.readLine()) != null) {
+			String[] tokens = line2.split("\\s+");
+			if (line2.equals("**")) {
+				// DO Nothing yet
+			}
+//			System.out.println("cities size: " + this.cities.size());
+			for (int i = 0; i < this.cities.size(); i++) {
+				if (tokens[0].equals(this.cities.get(i).name)) {
+					for (int k = 1; k < tokens.length; k++) {
+						for (int m = 0; m < cities.size(); m++) {
+							if (cities.get(m).name.equals(tokens[k])) {
+//								System.out.println("check executed");
+								this.neighbours.add(cities.get(i));
+							}
+						}
+					}
+				}
+				
+				this.neighbormap.put(cities.get(i), this.neighbours);
+//				 System.out.println(cities.get(i).toString());
+//				 System.out.println("neighbours" + neighbours.toString());
+			}
+
+			// System.out.println(this.neighbours.toString());
+//			 this.neighbours = new ArrayList<Node>();
+		}
+		br2.close();
 	}
-	
-	
+
 }
