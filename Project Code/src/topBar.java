@@ -12,59 +12,26 @@ import javax.swing.JMenuItem;
 public class topBar {
 	JMenuBar menubar;
 	
-	public topBar(){
+	public topBar(ActionListener listener){
 		menubar = new JMenuBar();
 		//menubar.setBackground(Color.BLUE);
 		JMenu menu = new JMenu("Home");
 		JMenu menu2 = new JMenu("Trip Planner");
 		JMenu menu3 = new JMenu("Search");
-		JMenuItem item = new JMenuItem("hello");
+		JMenuItem item = new JMenuItem("Home");
+		JMenuItem itemt = new JMenuItem("Trip Planner");
 		JMenuItem itemm3 = new JMenuItem("City");
 		JMenuItem itemm32 = new JMenuItem("Path");
 		
-		ActionListener menuListener = new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				//add the home sidebar to the frame and redraw
-				System.out.println("Home");
-			}
-		};
-		
-		ActionListener menu2Listener = new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				//add the trip planner sidebar to the frame and redraw
-				System.out.println("TripPlanner");
-			}
-		};
-		
-		ActionListener itemListener = new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				//add the hello sidebar to the frame and redraw
-				System.out.println("Hello");
-			}
-		};
-		
-		ActionListener itemm3Listener = new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				//add the city sidebar to the frame and redraw
-				System.out.println("City");
-				PlannerFrame.changeSideToCity();
-			}
-		};
-		
-		ActionListener itemm32Listener = new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				//add the path sidebar to the frame and redraw
-				System.out.println("Path");
-			}
-		};
-		
-		menu.addActionListener(menuListener);
-		menu2.addActionListener(menu2Listener);
-		item.addActionListener(itemListener);
-		itemm3.addActionListener(itemm3Listener);
-		itemm32.addActionListener(itemm32Listener);
+		menu.addActionListener(listener);
+		menu2.addActionListener(listener);
+		item.addActionListener(listener);
+		itemt.addActionListener(listener);
+		itemm3.addActionListener(listener);
+		itemm32.addActionListener(listener);
 		
 		menu.add(item);
+		menu2.add(itemt);
 		menu3.add(itemm3);
 		menu3.add(itemm32);
 		menubar.add(menu);
