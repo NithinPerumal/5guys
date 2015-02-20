@@ -15,17 +15,18 @@ public class Reader {
 			e.printStackTrace();
 		}
 
-//		int count = 1;
-//		for (Node name : newReader.neighbormap.keySet()) {
-////			System.out.println(count);
-//			String key = name.name;
-//			String value = newReader.neighbormap.get(name).toString();
-////			System.out.println(key + " : " + value);
-//			count++;
-//		}
-		for (int i=0; i< newReader.cities.size(); i++){
+		// int count = 1;
+		// for (Node name : newReader.neighbormap.keySet()) {
+		// // System.out.println(count);
+		// String key = name.name;
+		// String value = newReader.neighbormap.get(name).toString();
+		// // System.out.println(key + " : " + value);
+		// count++;
+		// }
+		for (int i = 0; i < newReader.cities.size(); i++) {
 			System.out.println("City: " + newReader.cities.get(i).name);
-			System.out.println("Neighbors: " + newReader.cities.get(i).neighbors.toString());
+			System.out.println("Neighbors: "
+					+ newReader.cities.get(i).neighbors.toString());
 		}
 	}
 
@@ -36,6 +37,7 @@ public class Reader {
 	ArrayList<Node> cities;
 	String name;
 	HashMap<Node, ArrayList<Node>> neighbormap = new HashMap<Node, ArrayList<Node>>();
+	HashMap<Node, Integer> distanceMap = new HashMap<Node, Integer>();
 
 	public Reader() {
 		neighbours = new ArrayList<Node>();
@@ -97,14 +99,14 @@ public class Reader {
 				// System.out.println("CITYSIZE: " + cities.size());
 				for (int i = 1; i < tokens.length; i++) {
 					for (int j = 0; j < this.cities.size(); j++) {
-//						System.out.println("J: " + j);
+						// System.out.println("J: " + j);
 						if (tokens[0].equals(cities.get(j).name)) {
 							for (int k = 0; k < this.cities.size(); k++) {
-//								System.out.println("tokens[i] " + tokens[i]);
-//								System.out.println("cities: "
-//										+ cities.get(k).toString());
+								// System.out.println("tokens[i] " + tokens[i]);
+								// System.out.println("cities: "
+								// + cities.get(k).toString());
 								if (tokens[i].equals(cities.get(k).toString())) {
-//									System.out.println("hihi");
+									// System.out.println("hihi");
 									this.neighbours.add(cities.get(k));
 								}
 								// if(this.neighbours.contains(cities.get(j))){
@@ -113,31 +115,27 @@ public class Reader {
 							}
 						}
 					}
-//					 System.out.println("neighbours " +
-//					 neighbours.toString());
-					// System.out.println("1");
-//					System.out.println(cities.get(i).name);
-//					System.out.println("size of neighbor "
-//							+ this.neighbormap.get(cities.get(i)).size());
-
-					// System.out.println(cities.get(i).toString());
 
 				}
-//				System.out.println(this.neighbours.toString());
-				for (int l=0; l<this.cities.size(); l++){
-					if (tokens[0].equals(cities.get(l).name)){
+				// System.out.println(this.neighbours.toString());
+				for (int l = 0; l < this.cities.size(); l++) {
+					if (tokens[0].equals(cities.get(l).name)) {
 						System.out.println("City:" + cities.get(l).name);
 						cities.get(l).neighbors = this.neighbours;
-						System.out.println("Neighbors: " + cities.get(l).neighbors.toString());
+						System.out.println("Neighbors: "
+								+ cities.get(l).neighbors.toString());
 						this.neighbormap.put(cities.get(l), this.neighbours);
-						System.out.println(this.neighbormap.containsKey(cities.get(l)));
+						System.out.println(this.neighbormap.containsKey(cities
+								.get(l)));
 					}
 				}
 
 				// System.out.println(neighbours.size());
-//				System.out.println(this.neighbormap.get(cities.get(0)) + " asdafwregwa");
+				// System.out.println(this.neighbormap.get(cities.get(0)) +
+				// " asdafwregwa");
 				this.neighbours = new ArrayList<Node>();
-//				System.out.println(this.neighbormap.get(cities.get(0)) + " asdafwregwa");
+				// System.out.println(this.neighbormap.get(cities.get(0)) +
+				// " asdafwregwa");
 				// System.out.println("neighbours " + neighbours.toString());
 			}
 			// System.out.println(this.neighbours.toString());
@@ -145,6 +143,26 @@ public class Reader {
 		}
 
 		br2.close();
+
+		BufferedReader br3;
+		br3 = new BufferedReader(new FileReader("City-Paths.txt"));
+		String line3;
+		while ((line3 = br.readLine()) != null) {
+			String[] tokens = line3.split("\\s+");
+			if (!line3.equals("**")) {
+				for (int i = 0; i < this.cities.size(); i++) {
+					if (tokens[0].equals(this.cities.get(i).name)) {
+						for (int k = 0; k < this.cities.size(); k++) {
+							if (tokens[1].equals(this.cities.get(k).name)) {
+								this.distanceMap.put(this.cities.get(k),
+										Integer.parseInt(tokens[2]));
+							}
+						}
+					}
+				}
+			}
+		}
+		br3.close();
 	}
 
 }

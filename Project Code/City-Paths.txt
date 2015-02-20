@@ -1,16 +1,14 @@
-									//Paths
-Bangalore	Chennai
+Bangalore	Chennai		80
+Bangalore	Trivandrum	90
 **
-Bangalore	Trivandrum
+Agra	Delhi			120
 **
-Agra	Delhi
+Hyderabad	Bangalore	160
 **
-Hyderabad	Bangalore
+Chennai	Trivandrum		140
 **
-Chennai	Trivandrum
+Trivandrum	Hyderabad	200
 **
-Trivandrum	Hyderabad
+Delhi	Amritsar		160
 **
-Delhi	Amritsar
-**
-Amritsar Bangalore
+Amritsar Bangalore		400
