@@ -13,11 +13,11 @@ public class Graph {
 		finish=end;
 		
 	}
-	public ArrayList<Path>bestPath(){
-		PriorityQueue<Route> answer=this.addRoutes();
-		return answer.poll().getList();		
-		
-	}
+//	public ArrayList<Path>bestPath(){
+////		PriorityQueue<Route> answer=this.findRoute();
+//		return answer.poll().getList();		
+//		
+//	}
 	
 	
 //	public PriorityQueue<Route> addRoutes(){
@@ -44,9 +44,57 @@ public class Graph {
 //		return fin;
 //	}
 	
+	PriorityQueue<Route> routes = new PriorityQueue<Route>();
+	
 	public void findRoute(ArrayList<Node> visited, Node n, ArrayList<Node> route){
 		route.add(n);
-		route.get(0);
+		Double cost = getCost(route);
+		Route r = new Route(route,cost);
+		if(routes.peek() != null){
+			if(routes.peek().getCost()<r.getCost())
+				return;
+			
+		}
+		for(Node neigh:n.getNeighbors()){
+			if(neigh.name.equalsIgnoreCase(finish.name)){
+				route.add(neigh);
+				cost=getCost(route);
+				Route fin=new Route(route,cost);
+				routes.add(fin);
+				return;
+			}else{
+				ArrayList<Node>unvisited=new ArrayList<Node>();
+				boolean lookedAt=false;
+				for(Node check: visited){
+					if(neigh.name.equalsIgnoreCase(check.name)){
+						lookedAt=true;
+					}
+					else{
+						visited.add(neigh);
+					}
+					if(!lookedAt)
+						unvisited.add(neigh);
+					if(unvisited.size()==0)
+						return;
+					else{
+						for(Node temp:unvisited){
+							ArrayList<Node> routeTemp = route;
+							routeTemp.add(temp);
+							findRoute(visited,temp,routeTemp);
+						}
+					}
+				}
+			}
+		}
+		
+		
+	}
+	private Double getCost(ArrayList<Node> route) {
+		Double dist = (double) 0;
+		for(int i = 0; i < route.size() - 2; i ++){
+			dist += route.get(i).getDistance(route.get(i + 1));
+		}
+		return dist;
 	}
 	
 	

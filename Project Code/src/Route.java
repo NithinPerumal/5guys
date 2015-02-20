@@ -29,15 +29,15 @@ public class Route {
 //		dEstimate = estimate();
 //	}
 	
-//	public Route(ArrayList<Node> routeToTraverse, Double cost){
-//		this.neighbors = routeToTraverse;
-//		this.cost = cost;
-//	}
-	
-	public Route(ArrayList<Path> paths, Double pathCost){
-		this.paths = paths;
-		this.cost = pathCost;
+	public Route(ArrayList<Node> routeToTraverse, Double cost){
+		this.neighbors = routeToTraverse;
+		this.cost = cost;
 	}
+	
+//	public Route(ArrayList<Path> paths, Double pathCost){
+//		this.paths = paths;
+//		this.cost = pathCost;
+//	}
 	
 	public ArrayList<Path> getList(){
 		return this.paths;
