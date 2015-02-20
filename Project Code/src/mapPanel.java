@@ -28,7 +28,6 @@ public class mapPanel extends JComponent {
 		g.fillRect(0, 0, getWidth(), getHeight());
 		for (int i=0; i<list.size(); i++){
 			list.get(i).draw(g2, 15);
-			System.out.println(i);
 			g.drawString(list.get(i).name, (int)list.get(i).getXCoord(), (int)list.get(i).getYCoord() + 30);
 		}
 	}
