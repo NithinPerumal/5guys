@@ -55,7 +55,7 @@ public class Node {
 	}
 
 	public double getDistance(Node neighbor) {
-		return this.coord.distance(neighbor.getCoord());
+		return Math.abs(this.coord.distance(neighbor.getCoord()));
 	}
 
 	public Point getCoord() {

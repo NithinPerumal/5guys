@@ -1,12 +1,12 @@
 Bangalore	150	200	85 Lal-Bagh	Cubbon-Park
 **
-Chennai		290	160	75 Marina-Beach	Andavar-Temple
+Chennai		490	160	75 Marina-Beach	Andavar-Temple
 **
 Trivandrum	140	50	50 Trivandrum-Zoo	Kowdiar-Palace
 **
 Agra		300 400	85 Taj-Mahal	Agra-Fort
 **
-Hyderabad	250	200 70 Charminar
+Hyderabad	100	190 70 Charminar
 **
 Delhi		300	350	80	Quatab-Minar	
 **

@@ -48,8 +48,11 @@ public class PriorityQueue<Object> extends ArrayList<Object> {
 					if (relement.getDistance() < lelement.getDistance()) {
 						super.set(spot, (Object) relement);
 						super.set(rspot, (Object) element);
+						percolateDown(rspot);
 					} else if (relement.getDistance() > lelement.getDistance()) {
-
+						super.set(spot, (Object) lelement);
+						super.set(lspot, (Object) element);
+						percolateDown(lspot);
 					} else {
 						return;
 					}

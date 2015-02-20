@@ -19,20 +19,22 @@ public class Route {
 	private ArrayList<Node> neighbors;
 	private ArrayList<Path> paths;
 	private Double cost;
+	private ArrayList<Node>completeRoute;
 	
 	HashMap<Double, ArrayList<Node>> finalPath = new HashMap<Double, ArrayList<Node>>();
 
-//	public Route(Node starter, Node finish, Double cost) {
-//		start = starter;
-//		dest = finish;
-//		neighbors = start.getNeighbors();
-//		dEstimate = estimate();
-//	}
-	
-	public Route(ArrayList<Node> routeToTraverse, Double cost){
-		this.neighbors = routeToTraverse;
-		this.cost = cost;
+	public Route(Node starter, Node finish) {
+		start = starter;
+		dest = finish;
+		neighbors = start.getNeighbors();
+		dEstimate = estimate();
+		completeRoute=new ArrayList<Node>();
 	}
+	
+//	public Route(ArrayList<Node> routeToTraverse, Double cost){
+//		this.neighbors = routeToTraverse;
+//		this.cost = cost;
+//	}
 	
 //	public Route(ArrayList<Path> paths, Double pathCost){
 //		this.paths = paths;
@@ -47,29 +49,28 @@ public class Route {
 		return this.cost;
 	}
 
-	public ArrayList<Node> createPaths() {
-		
-		
-		for(Node n : neighbors){
-			
-		}
-		
-		
-		
+	public ArrayList<Node> createPaths() {		
 		
 		PriorityQueue<Object> router = new PriorityQueue<Object>();
-		ArrayList<Node> completeRoute = new ArrayList<Node>();
+	    completeRoute = new ArrayList<Node>();
 		Node checker = this.start;
+		double est=this.start.getDistance(dest)+300;
 		ArrayList<Double> curDistances = new ArrayList<Double>();
 //		double totalDist = 0;
-		while (!checker.name.equals( dest.name) ) {  // while you do not check yourself
-			for (Node p : neighbors) {  // for each node in neighbors
-				Path path = new Path(start, p, estimate(), 10, 7);  // third and fourth are from text doc
-//				
-				if(p.getDistance(dest) < this.estimate()){  // prevent from going in opposite direction
+		while (!checker.name.equals( dest.name) ) {  
+			System.out.println(checker.neighbors.size());
+			for (Node p : checker.neighbors) { 
+//				System.out.println(p.name);// for each node in neighbors
+				Path path = new Path(checker, p, estimate(), 10, 7);  // third and fourth are from text doc
+				
+				if(p.getDistance(dest) < checker.getDistance(dest)){  // prevent from going in opposite direction
+				
+//				if(p.getDistance(dest)<est){
+//					System.out.println("much goat");
 					router.add(path);
 				}				
-				
+//				if(p.coord.y>checker.coord.y)
+//					router.add(path);
 				/**
 				 * Call best path return dest node of greatest path to take
 				 * while ret(best path) != dest route bestpath() with start
@@ -80,10 +81,14 @@ public class Route {
 				
 				
 			}
-			
-			checker = router.poll().getGoalNode();  // changes which one is the current node to be checked and pops off the one on top
+//			System.out.println(router.peek().getGoalName());
+			checker = router.poll().getGoalNode(); 
+			System.out.println(checker.name);
+			// changes which one is the current node to be checked and pops off the one on top
 			completeRoute.add(checker);  // adds the current checked one to the complete route
-			router.clear();  // clears the router
+			router.clear(); 
+			
+			// clears the router
 
 			
 		}
@@ -148,9 +153,13 @@ public class Route {
 ////			totalDist += completeRoute.peek().getDistance(neighbor)
 //			
 //		}
+		System.out.println("size of route "+ completeRoute.size());
 		return completeRoute;
 	}
 
+	public String toString(){
+		return this.completeRoute.toString();
+	}
 	private double estimate() {
 		Point a = start.getCoord();
 		Point b = dest.getCoord();

@@ -53,7 +53,7 @@ public class Path {
 	}
 
 	private double setDistance() {
-		return dest.getDistance(start);
+		return start.getDistance(dest);
 
 	}
 
