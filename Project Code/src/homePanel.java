@@ -20,13 +20,13 @@ public class homePanel {
 		list = cities;
 		side = new JPanel();
 		side.setBackground(Color.RED);
-		side.setPreferredSize(new Dimension(150,500));
+		side.setPreferredSize(new Dimension(150,1000));
 		JTextArea textArea = new JTextArea(5, 10);
 		//JScrollPane scrollPane = new JScrollPane(textArea); 
 		textArea.setEditable(false);
 		side.add(textArea);
 		String paths = "This is a test here \n is a path a whole new \n path maybe another";
-		JTextArea textArea1 = new JTextArea(paths, 10, 10);
+		final JTextArea textArea1 = new JTextArea(paths, 10, 10);
 		//JScrollPane scrollPane = new JScrollPane(textArea); 
 		textArea.setEditable(false);
 		side.add(textArea1);
@@ -39,23 +39,23 @@ public class homePanel {
 			public void actionPerformed(ActionEvent e) {
 				String city1 = textField1.getText();
 				String city2 = textField2.getText();
+				Node node1 = null;
+				Node node2 = null;
 				for(int i=0; i<list.size(); i++){
-					Node node1 = null;
-					Node node2 = null;
 					if (list.get(i).name.equals(city1)){
 						node1 = list.get(i);
 					}
 					if (list.get(i).name.equals(city2)){
 						node2 = list.get(i);
 					}
-					if (node1 != null && node2 != null){
-						Graph finder = new Graph(node1, node1, node2);
-						ArrayList<Node> visited = new ArrayList<Node>();
-						ArrayList<Node> route = new ArrayList<Node>();
-						finder.findRoute(visited, node1, route);
-						System.out.println(route.toString());
-						System.out.println("hey");
-					}
+				}
+				System.out.println("hey");
+				if (node1 != null && node2 != null){
+					Graph finder = new Graph(node1, node1, node2);
+					ArrayList<Node> visited = new ArrayList<Node>();
+					ArrayList<Node> route = new ArrayList<Node>();
+					finder.findRoute(visited, node1, route);
+					textArea1.setText(route.toString());
 				}
 			}
 			

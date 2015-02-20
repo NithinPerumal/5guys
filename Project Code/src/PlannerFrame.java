@@ -32,6 +32,7 @@ public class PlannerFrame {
 		HashMap<Node, ArrayList<Node>> neighborMap = newReader.neighbormap;
 		
 		final JPanel sidePanel = new JPanel();
+		sidePanel.setBackground(Color.RED);
 		
 		homePanel home = new homePanel(cities);
 		sidePanel.add(home.side);
