@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class PlannerFrame {
+public class PlannerFrame {	
 	public static void main(String[] args) {
 		int width = 1000;
 		int height = 500;
@@ -49,5 +49,9 @@ public class PlannerFrame {
 		background.add(back);
 		background.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		background.setVisible(true);
+	}
+	
+	public static void changeSideToCity(){
+		System.out.println("Change City");
 	}
 }

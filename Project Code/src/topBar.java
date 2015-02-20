@@ -47,6 +47,7 @@ public class topBar {
 			public void actionPerformed(ActionEvent e){
 				//add the city sidebar to the frame and redraw
 				System.out.println("City");
+				PlannerFrame.changeSideToCity();
 			}
 		};
 		
