@@ -13,16 +13,26 @@ public class Path {
 	private Node dest;
 	private double distance;
 	private double time;
+	private double distCost;
 
-	public Path(Node starter, Node goal, double estimate, double time) {
+	public Path(Node starter, Node goal, double estimate, double time, double distCost) {
 		distanceEstimate = estimate;
+		this.distCost = distCost;
 		start = starter;
 		dest = goal;
 		distance = setDistance();
 		this.time = time;
 	}
+	
+	public Node getStart(){
+		return this.start;
+	}
+	
+	public double getDistCost(){
+		return this.distCost;
+	}
 
-	public double getDCost() {
+	public double getDistEstimate() {
 		return this.distanceEstimate;
 	}
 
