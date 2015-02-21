@@ -49,6 +49,11 @@ public class Route {
 	public Double getCost(){
 		return this.cost;
 	}
+	
+	public boolean updateCost(Integer cost){
+		this.cost += cost;
+		return true;
+	}
 
 	public ArrayList<Node> createPaths() {		
 		

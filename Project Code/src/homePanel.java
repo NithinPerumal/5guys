@@ -62,12 +62,13 @@ public class homePanel {
 				System.out.println("hey");
 				if (node1 != null && node2 != null){
 					System.out.println("got here");
-//					Graph finder = new Graph(node1, node1, node2);
+					Graph finder = new Graph(node1, node1, node2);
 					ArrayList<Node> visited = new ArrayList<Node>();
 					ArrayList<Node> route = new ArrayList<Node>();
 //					finder.findRoute(visited, node1, route);
-					Route r = new Route(node1,node2);
-					route=r.createPaths();
+					route = finder.bestPath();
+//					Route r = new Route(node1,node2);
+//					route=r.createPaths();
 					String temp = "";
 					for (int j=0; j<route.size(); j++){
 						temp = temp + route.get(j) +"\n";

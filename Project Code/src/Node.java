@@ -39,7 +39,7 @@ public class Node {
 		this.Stringneighbours = neighbours;
 		this.interest = interest;
 		coord = new Point(x, y);
-		distMap.put(this, interest);
+		distMap.put(this, interest);  // need to find actual dist cost, can be used for interest
 	}
 
 	public ArrayList<Node> getNeighbors() {
@@ -95,6 +95,8 @@ public class Node {
 	}
 	
 	public Integer getDistCost(Node n){
+		System.out.println(distMap.size());
+		System.out.println(distMap.keySet().toString());
 		return distMap.get(n);
 	}
 

@@ -101,15 +101,15 @@ public class PriorityQueueGraph<Object> extends ArrayList<Object> {
 	 * 
 	 * @return first element
 	 */
-	public Path poll() {
+	public Route poll() {
 		if (this.size() == 0)
 			return null;
 		if (this.size() > 2) {
-			Path tempor = (Path) super.get(1);
+			Route tempor = (Route) super.get(1);
 			super.set(1, super.get(2));
 			super.set(2, (Object) tempor);
 		}
-		Path temp = (Path) super.get(0);
+		Route temp = (Route) super.get(0);
 		remove(temp);
 		return temp;
 

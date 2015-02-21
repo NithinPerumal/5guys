@@ -7,7 +7,7 @@ public class Graph {
 	private Node start;
 	private Node finish;
 	private Node root;
-	private ArrayList<Node> visited;
+	private Node visited;
 	private ArrayList<Node> route;
 	public Graph(Node root, Node begin,Node end){
 		this.root = root;
@@ -16,7 +16,7 @@ public class Graph {
 		
 	}
 	public ArrayList<Node> bestPath(){
-		PriorityQueue<Graph> answer = this.addRoutes();
+		PriorityQueueGraph<Route> answer = this.addRoutes();
 		return answer.poll().getList();		
 	}
 	
@@ -42,17 +42,57 @@ public class Graph {
 				temp.add(start);
 				temp.add(n);
 				
+				if(start == null){
+					System.out.println("bitches");
+				}
+				if(start == root){
+					System.out.println("ditches");
+					System.out.println(n.name);
+					System.out.println("start interest " + start.interest);
+					System.out.println("n interest " + n.interest);
+					if(start == n){
+						System.out.println("penis");
+					}
+				}
+				
 				double distCost = start.getDistCost(n);
 				
 				Route r = new Route(temp, distCost);
 				fin.add(r);
+				
+				visited = start;
+				start = n;
+				continue;
 			}
 			
 			else{ // start != root
-				for(Route r : fin){
-					r.getList().add(n);  // add each node to their routes
-					System.out.println("routes " + r.getList().toString());
+				
+				if(visited != n)
+					for(Route r : fin){
+						
+						
+						
+							r.getList().add(n);  // add each node to their routes, not update cost
+							r.updateCost(start.getDistCost(n));  // update cost
+							
+							System.out.println("routes " + r.getList().toString());  
+						
+						
+						
+						
+						
+					}
+				else{
+					continue;
 				}
+				
+			}
+			
+			start = n;
+			visited = n;
+			
+			if(start == finish){
+				break;
 			}
 		}
 		return fin;
