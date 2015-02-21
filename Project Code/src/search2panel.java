@@ -14,15 +14,17 @@ public class search2panel {
 	
 	public search2panel(){
 		side = new JPanel();
-		side.setBackground(Color.RED);
+		side.setBackground(Color.BLACK);
 		side.setPreferredSize(new Dimension(150,500));
 		ButtonGroup group = new ButtonGroup();
 		JRadioButton distance = new JRadioButton("distance");
-		distance.setBackground(Color.RED);
+		distance.setBackground(Color.BLACK);
+		distance.setForeground(Color.RED);
 		group.add(distance);
 		side.add(distance);
 		JRadioButton time = new JRadioButton("time");
-		time.setBackground(Color.RED);
+		time.setBackground(Color.BLACK);
+		time.setForeground(Color.RED);
 		group.add(time);
 		side.add(time);
 		

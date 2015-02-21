@@ -57,6 +57,13 @@ public class mapPanel extends JComponent {
 			g.drawString(list.get(i).name, (int)list.get(i).getXCoord(), (int)list.get(i).getYCoord() + 30);
 		}
 	}
+	
+	public ArrayList<Node> getSelects(){
+		ArrayList<Node> selects = new ArrayList<Node>();
+		selects.add(select1);
+		selects.add(select2);
+		return selects;
+	}
 
 	private class mouseListener implements MouseListener {
 

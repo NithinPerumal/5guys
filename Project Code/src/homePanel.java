@@ -17,9 +17,11 @@ import javax.swing.border.Border;
 public class homePanel {
 	JPanel side;
 	ArrayList<Node> list;
+	mapPanel citySelects;
 	
-	public homePanel(ArrayList<Node> cities){
+	public homePanel(ArrayList<Node> cities, mapPanel selects){
 		list = cities;
+		citySelects = selects;
 		side = new JPanel();
 		side.setBackground(Color.BLACK);
 		side.setPreferredSize(new Dimension(150,1000));
@@ -40,25 +42,13 @@ public class homePanel {
 		Border border2 = BorderFactory.createLineBorder(Color.red);
 		textArea1.setBorder(border2);
 		side.add(textArea1);
-		final JTextField textField1 = new JTextField(10);
-		side.add(textField1);
-		final JTextField textField2 = new JTextField(10);
-		side.add(textField2);
 		ActionListener buttonListener = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				String city1 = textField1.getText();
-				String city2 = textField2.getText();
-				Node node1 = null;
-				Node node2 = null;
-				for(int i=0; i<list.size(); i++){
-					if (list.get(i).name.equals(city1)){
-						node1 = list.get(i);
-					}
-					if (list.get(i).name.equals(city2)){
-						node2 = list.get(i);
-					}
-				}
+				ArrayList<Node> sel = citySelects.getSelect();
+				System.out.println("City Selects: " + sel.get(0).name);
+				Node node1 = sel.get(0);
+				Node node2 = sel.get(1);
 				System.out.println("hey");
 				if (node1 != null && node2 != null){
 					System.out.println("got here");

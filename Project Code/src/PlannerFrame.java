@@ -34,7 +34,10 @@ public class PlannerFrame {
 		final JPanel sidePanel = new JPanel();
 		sidePanel.setBackground(Color.BLACK);
 		
-		homePanel home = new homePanel(cities);
+		final mapPanel mapP = new mapPanel(cities, neighborMap);
+		back.add(mapP, BorderLayout.CENTER);
+		
+		homePanel home = new homePanel(cities, mapP);
 		sidePanel.add(home.side);
 		back.add(sidePanel, BorderLayout.LINE_END);
 		
@@ -59,7 +62,7 @@ public class PlannerFrame {
 					back.validate();
 				}
 				if (name == "Home"){
-					homePanel home = new homePanel(cities);
+					homePanel home = new homePanel(cities, mapP);
 					back.remove(sidePanel);
 					sidePanel.removeAll();
 					sidePanel.add(home.side);
@@ -76,11 +79,6 @@ public class PlannerFrame {
 				}
 			}
 		};
-		
-		
-		mapPanel mapP = new mapPanel(cities, neighborMap);
-		mapP.setBackground(Color.GREEN);
-		back.add(mapP, BorderLayout.CENTER);
 		
 //		search2panel search2 = new search2panel();
 //		back.add(search2.side, BorderLayout.LINE_END);

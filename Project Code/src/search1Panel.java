@@ -14,15 +14,17 @@ public class search1Panel {
 	
 	public search1Panel(){
 		side = new JPanel();
-		side.setBackground(Color.RED);
+		side.setBackground(Color.BLACK);
 		side.setPreferredSize(new Dimension(150,500));
 		ButtonGroup group = new ButtonGroup();
 		JRadioButton most = new JRadioButton("Most to least");
-		most.setBackground(Color.RED);
+		most.setBackground(Color.BLACK);
+		most.setForeground(Color.RED);
 		group.add(most);
 		side.add(most);
 		JRadioButton least = new JRadioButton("Least to Most");
-		least.setBackground(Color.RED);
+		least.setBackground(Color.BLACK);
+		least.setForeground(Color.RED);
 		group.add(least);
 		side.add(least);
 		
