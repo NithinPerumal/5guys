@@ -14,14 +14,26 @@ public class topBar {
 	
 	public topBar(ActionListener listener){
 		menubar = new JMenuBar();
+		menubar.setBackground(Color.BLACK);
 		//menubar.setBackground(Color.BLUE);
 		JMenu menu = new JMenu("Home");
+		menu.setForeground(Color.RED);
 		JMenu menu2 = new JMenu("Trip Planner");
+		menu2.setForeground(Color.RED);
 		JMenu menu3 = new JMenu("Search");
+		menu3.setForeground(Color.RED);
 		JMenuItem item = new JMenuItem("Home");
+		item.setBackground(Color.BLACK);
+		item.setForeground(Color.RED);
 		JMenuItem itemt = new JMenuItem("Trip Planner");
+		itemt.setBackground(Color.BLACK);
+		itemt.setForeground(Color.RED);
 		JMenuItem itemm3 = new JMenuItem("City");
+		itemm3.setBackground(Color.BLACK);
+		itemm3.setForeground(Color.RED);
 		JMenuItem itemm32 = new JMenuItem("Path");
+		itemm32.setBackground(Color.BLACK);
+		itemm32.setForeground(Color.RED);
 		
 		menu.addActionListener(listener);
 		menu2.addActionListener(listener);

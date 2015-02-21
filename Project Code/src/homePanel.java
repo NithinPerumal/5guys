@@ -4,12 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 
 public class homePanel {
@@ -19,16 +21,24 @@ public class homePanel {
 	public homePanel(ArrayList<Node> cities){
 		list = cities;
 		side = new JPanel();
-		side.setBackground(Color.RED);
+		side.setBackground(Color.BLACK);
 		side.setPreferredSize(new Dimension(150,1000));
 		JTextArea textArea = new JTextArea(5, 10);
 		//JScrollPane scrollPane = new JScrollPane(textArea); 
 		textArea.setEditable(false);
+		textArea.setBackground(Color.BLACK);
+		textArea.setForeground(Color.WHITE);
+		Border border1 = BorderFactory.createLineBorder(Color.red);
+		textArea.setBorder(border1);
 		side.add(textArea);
 		String paths = "This is a test here \n is a path a whole new \n path maybe another";
 		final JTextArea textArea1 = new JTextArea(paths, 10, 10);
 		//JScrollPane scrollPane = new JScrollPane(textArea); 
 		textArea.setEditable(false);
+		textArea1.setBackground(Color.BLACK);
+		textArea1.setForeground(Color.WHITE);
+		Border border2 = BorderFactory.createLineBorder(Color.red);
+		textArea1.setBorder(border2);
 		side.add(textArea1);
 		final JTextField textField1 = new JTextField(10);
 		side.add(textField1);
@@ -68,6 +78,8 @@ public class homePanel {
 			
 		};
 		JButton button = new JButton("Get Path");
+		button.setBackground(Color.BLACK);
+		button.setForeground(Color.RED);
 		button.addActionListener(buttonListener);
 		side.add(button);
 	}

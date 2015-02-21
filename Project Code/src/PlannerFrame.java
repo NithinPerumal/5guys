@@ -32,7 +32,7 @@ public class PlannerFrame {
 		HashMap<Node, ArrayList<Node>> neighborMap = newReader.neighbormap;
 		
 		final JPanel sidePanel = new JPanel();
-		sidePanel.setBackground(Color.RED);
+		sidePanel.setBackground(Color.BLACK);
 		
 		homePanel home = new homePanel(cities);
 		sidePanel.add(home.side);
@@ -88,6 +88,7 @@ public class PlannerFrame {
 		
 		topBar menuBar = new topBar(topBarListener);
 		back.add(menuBar.menubar, BorderLayout.NORTH);
+		back.setBackground(Color.BLACK);
 		
 		background.add(back);
 		background.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
