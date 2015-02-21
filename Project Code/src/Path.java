@@ -51,6 +51,8 @@ public class Path {
 	public Node getGoalNode() {
 		return this.dest;
 	}
+	
+	
 
 	private double setDistance() {
 		return start.getDistance(dest);

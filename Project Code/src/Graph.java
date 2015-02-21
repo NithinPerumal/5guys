@@ -15,36 +15,48 @@ public class Graph {
 		finish=end;
 		
 	}
-//	public ArrayList<Path>bestPath(){
-////		PriorityQueue<Route> answer=this.findRoute();
-//		return answer.poll().getList();		
-//		
-//	}
+	public ArrayList<Node> bestPath(){
+		PriorityQueue<Graph> answer = this.addRoutes();
+		return answer.poll().getList();		
+	}
 	
 	
-//	public PriorityQueue<Route> addRoutes(){
-//		PriorityQueue<Route> fin = new PriorityQueue<Route>();
-//		for(Node n: start.getNeighbors()){
-////			Path p= new Path(start,n,0,5,5);
-////			ArrayList<Node> temp = new ArrayList<Node>();
-////			temp.add(n);
-////			Route r= new Route(temp,p.getDistCost());
-//			if(start == root){
-//				ArrayList<Path> temp = new ArrayList<Path>(); 
+	
+	
+	public PriorityQueueGraph<Route> addRoutes(){
+		
+		PriorityQueueGraph<Route> fin = new PriorityQueueGraph<Route>();
+		
+		// get the neighbor nodes
+		for(Node n : start.getNeighbors()){
+//			Path p= new Path(start,n,0,5,5);
+//			ArrayList<Node> temp = new ArrayList<Node>();
+//			temp.add(n);
+//			Route r= new Route(temp,p.getDistCost());
+			
+			
+			if(start == root){  // if this start is equal to the first clicked
+				
+				ArrayList<Node> temp = new ArrayList<Node>(); 
 //				Path p = new Path(start, n, 0, 5, 5);
-//				temp.add(p);
-//				Route r = new Route(temp, p.getDistCost());
-//				fin.add(r);
-//			}
-//			
-//			else{ // start != root
-//				for(Route r : fin){
-//					r.getList().add(new Path(start, n, 0, 5, 5));  // add each path to their routes
-//				}
-//			}
-//		}
-//		return fin;
-//	}
+				temp.add(start);
+				temp.add(n);
+				
+				double distCost = start.getDistCost(n);
+				
+				Route r = new Route(temp, distCost);
+				fin.add(r);
+			}
+			
+			else{ // start != root
+				for(Route r : fin){
+					r.getList().add(n);  // add each node to their routes
+					System.out.println("routes " + r.getList().toString());
+				}
+			}
+		}
+		return fin;
+	}
 	
 	PriorityQueue<Route> routes = new PriorityQueue<Route>();
 	

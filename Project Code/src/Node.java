@@ -29,7 +29,7 @@ public class Node {
 		this.name = name;
 		coord = new Point(x, y);
 		neighbors.add(this);
-
+		distMap.put(this, interest);
 	}
 
 	public Node(String cityName, ArrayList<String> landmarks,
@@ -39,7 +39,7 @@ public class Node {
 		this.Stringneighbours = neighbours;
 		this.interest = interest;
 		coord = new Point(x, y);
-
+		distMap.put(this, interest);
 	}
 
 	public ArrayList<Node> getNeighbors() {
@@ -92,6 +92,10 @@ public class Node {
 
 	public String toString() {
 		return this.name;
+	}
+	
+	public Integer getDistCost(Node n){
+		return distMap.get(n);
 	}
 
 }
