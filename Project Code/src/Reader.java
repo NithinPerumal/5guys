@@ -76,6 +76,7 @@ public class Reader {
 				this.y = Integer.parseInt(tokens[j]);
 				j++;
 				this.interest = Integer.parseInt(tokens[j]);
+				System.out.println("penis in the vagina");
 				j++;
 				while (j < tokens.length) {
 					landmarks.add(tokens[j]);
@@ -85,6 +86,12 @@ public class Reader {
 			if (this.name.length() != 0) {
 				Node city = new Node(this.name, this.landmarks, null, this.x,
 						this.y, this.interest);
+				System.out.println("hm of the distcost " + city.distMap.size());
+				System.out.println("distcost name " + city.distMap.put(city,city.interest));
+				System.out.println("reader hm " + this.distanceMap.size());
+				System.out.println("distmap name " + distanceMap.put(city, city.interest));
+				System.out.println("new reader hm " + this.distanceMap.size());
+				city.setDistCostMap(distanceMap);
 				// System.out.println("    ");
 				this.cities.add(city);
 

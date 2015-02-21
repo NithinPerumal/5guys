@@ -41,6 +41,10 @@ public class Node {
 		coord = new Point(x, y);
 		distMap.put(this, interest);  // need to find actual dist cost, can be used for interest
 	}
+	
+	public void setDistCostMap(HashMap<Node, Integer> map){
+		this.distMap = map;
+	}
 
 	public ArrayList<Node> getNeighbors() {
 		return neighbors;
