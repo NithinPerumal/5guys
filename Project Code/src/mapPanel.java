@@ -3,9 +3,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
@@ -35,7 +39,14 @@ public class mapPanel extends JComponent {
 		super.paintComponent(g);
 		g2 = (Graphics2D) g;
 		g2.setColor(Color.green);
-		g.fillRect(0, 0, getWidth(), getHeight());
+		BufferedImage img = null;
+		try {
+			img = ImageIO.read(new File("mapOfIndia.jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		g.drawImage(img, 0, 0, null);
+//		g.fillRect(0, 0, getWidth(), getHeight());
 		for (int i=0; i<list.size(); i++){
 			ArrayList<Node> neighbors = neighborsMap.get(list.get(i));
 			for (int j=0; j<neighbors.size(); j++){

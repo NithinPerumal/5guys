@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 
 public class PlannerFrame {	
 	public static void main(String[] args) {
-		int width = 1000;
-		int height = 500;
+		int width = 1200;
+		int height = 833;
 		final JFrame background = new JFrame();
 		background.setSize(width, height);
 		final JPanel back = new JPanel();
@@ -43,7 +43,7 @@ public class PlannerFrame {
 				JMenuItem topBarName = (JMenuItem) e.getSource();
 				String name = topBarName.getText();
 				if (name == "Trip Planner"){
-					tripPlannerPanel trip = new tripPlannerPanel();
+					tripPlannerPanel trip = new tripPlannerPanel(cities);
 					back.remove(sidePanel);
 					sidePanel.removeAll();
 					sidePanel.add(trip.side);
