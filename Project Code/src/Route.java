@@ -17,8 +17,8 @@ public class Route {
 	private Node dest;
 	private double dEstimate;
 	private ArrayList<Node> neighbors;
-	private ArrayList<Node> paths;
-	private Double cost;
+	private ArrayList<Node> paths = new ArrayList<Node>();
+	private Double cost = 0.0;
 	private ArrayList<Node> completeRoute;
 	
 	HashMap<Double, ArrayList<Node>> finalPath = new HashMap<Double, ArrayList<Node>>();
@@ -33,7 +33,7 @@ public class Route {
 	
 	public Route(ArrayList<Node> routeToTraverse, double distCost){
 		this.neighbors = routeToTraverse;
-		
+		System.out.println("distcost " + routeToTraverse);
 		this.cost += distCost;
 	}
 	

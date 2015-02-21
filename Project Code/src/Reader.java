@@ -92,6 +92,7 @@ public class Reader {
 				System.out.println("distmap name " + distanceMap.put(city, city.interest));
 				System.out.println("new reader hm " + this.distanceMap.size());
 				city.setDistCostMap(distanceMap);
+				System.out.println("new distmap " + city.distMap.size());
 				// System.out.println("    ");
 				this.cities.add(city);
 
