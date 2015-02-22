@@ -74,6 +74,7 @@ public class searchPanel {
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		side.add(scrollPane);
 		textArea.setEditable(false);
+		
 		//Search for path
 		JLabel costLabel = new JLabel("       Cost       ");
 		costLabel.setBackground(Color.BLACK);

@@ -61,10 +61,12 @@ public class tripPlannerPanel {
 					int distanceWanted = Integer.parseInt(distance.getText());
 					found = findDistance(city, distanceWanted);
 				}
-				String temp = "Nothing found";
+				String temp = "";
 				for (int j=0; j<found.size(); j++){
-					System.out.println(found.get(j));
 					temp = temp + found.get(j) +"\n";
+				}
+				if (found.size() == 0){
+					temp = "Nothing found";
 				}
 				textArea.setText(temp);
 			}
@@ -78,7 +80,7 @@ public class tripPlannerPanel {
 		cityList.setLightWeightPopupEnabled(false);
 		side.add(cityList);
 		
-		JLabel timeLabel = new JLabel("Enter a time to travel:");
+		JLabel timeLabel = new JLabel("Enter an intrest level:");
 		timeLabel.setForeground(Color.RED);
 		side.add(timeLabel);
 		time = new TextField(10);

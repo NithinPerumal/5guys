@@ -65,20 +65,6 @@ public class mapPanel extends JComponent {
 			g2.setColor(Color.WHITE);
 			g.drawString(list.get(k).name, (int)list.get(k).getXCoord(), (int)list.get(k).getYCoord() + 30);
 		}
-		if (routes != null){
-			if (routes.route != null){
-			for (int i=1; i<routes.route.size(); i++){
-				g2.setColor(Color.RED);
-				System.out.println("hello");
-				int x1 = (int) routes.route.get(i -1).getXCoord();
-				int y1 = (int) routes.route.get(i - 1).getYCoord();
-				int x2 = (int) routes.route.get(i).getXCoord();
-				int y2 = (int) routes.route.get(i).getYCoord();
-				g.drawLine(x1, y1, x2, y2);
-			}
-			}
-			System.out.println("bye");
-		}
 	}
 	
 	public ArrayList<Node> getSelects(){

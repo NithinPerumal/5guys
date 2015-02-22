@@ -27,7 +27,6 @@ public class homePanel {
 		side.addMouseListener(mouse);
 		side.setBackground(Color.BLACK);
 		side.setPreferredSize(new Dimension(150, 1000));
-		// JScrollPane scrollPane = new JScrollPane(textArea);
 		textArea.setEditable(false);
 		textArea.setBackground(Color.BLACK);
 		textArea.setForeground(Color.WHITE);
@@ -36,7 +35,6 @@ public class homePanel {
 		side.add(textArea);
 		String paths = "";
 		final JTextArea textArea1 = new JTextArea(paths, 10, 10);
-		// JScrollPane scrollPane = new JScrollPane(textArea);
 		textArea1.setEditable(false);
 		textArea1.setBackground(Color.BLACK);
 		textArea1.setForeground(Color.WHITE);
@@ -47,7 +45,6 @@ public class homePanel {
 
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<Node> sel = citySelects.getSelect();
-				System.out.println("City Selects: " + sel.get(0).name);
 				Node node1 = sel.get(0);
 				Node node2 = sel.get(1);
 				JButton button = (JButton) e.getSource();
@@ -55,14 +52,8 @@ public class homePanel {
 					if (node1 != null && node2 != null) {
 						Graph finder = new Graph(node1, node1, node2);
 						ArrayList<Node> route = finder.bestPath();
-						// System.out.println("da answer is" +
-						// route.toString());
-						// Route r = new Route(node1,node2);
-						// route=r.createPaths();
 						String temp = "";
-						System.out.println(route.size());
 						for (int j = 0; j < route.size(); j++) {
-							System.out.println(route.get(j));
 							temp = temp + route.get(j) + "\n";
 						}
 						textArea1.setText(temp);
@@ -72,14 +63,8 @@ public class homePanel {
 					if (node1 != null && node2 != null) {
 						Graph finder = new Graph(node1, node1, node2);
 						ArrayList<Node> route = finder.mostInteresting();
-						// System.out.println("da answer is" +
-						// route.toString());
-						// Route r = new Route(node1,node2);
-						// route=r.createPaths();
 						String temp = "";
-						System.out.println(route.size());
 						for (int j = 0; j < route.size(); j++) {
-							System.out.println(route.get(j));
 							temp = temp + route.get(j) + "\n";
 						}
 						textArea1.setText(temp);
@@ -108,7 +93,6 @@ public class homePanel {
 				String info = "City: " + "\n" + sel.get(0).name;
 				info = info + "\n" + "Landmarks: ";
 				for (int i = 0; i < sel.get(0).getLandmarks().size(); i++) {
-					System.out.println("hello");
 					info += "\n" + sel.get(0).getLandmarks().get(i);
 				}
 				textArea.setText(info);
