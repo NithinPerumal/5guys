@@ -67,12 +67,13 @@ public class Route {
 	}
 
 
-	public String toString(){
+	public String toString(){	
 		if(completeRoute == null){
 			System.out.println("complete route is null");
 		}
 		return this.paths.toString();
 	}
+	
 	private double estimate() {
 		Point a = start.getCoord();
 		Point b = dest.getCoord();
