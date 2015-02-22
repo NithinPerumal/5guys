@@ -38,18 +38,18 @@ public class PriorityQueueGraph<Object> extends ArrayList<Object> {
 			int lspot = ((spot + 1) * 2) - 1;
 			int rspot = (spot + 1) * 2;
 			if (rspot <= super.size() - 1) {
-				Path lelement = (Path) super.get(lspot);
-				Path relement = (Path) super.get(rspot);
-				Path element = (Path) super.get(spot);
+				Route lelement = (Route) super.get(lspot);
+				Route relement = (Route) super.get(rspot);
+				Route element = (Route) super.get(spot);
 
-				if (element.getDistance() > lelement.getDistance()
-						|| element.getDistance() > relement.getDistance()) {
+				if (element.getCost() > lelement.getCost()
+						|| element.getCost() > relement.getCost()) {
 
-					if (relement.getDistance() < lelement.getDistance()) {
+					if (relement.getCost() < lelement.getCost()) {
 						super.set(spot, (Object) relement);
 						super.set(rspot, (Object) element);
 						percolateDown(rspot);
-					} else if (relement.getDistance() > lelement.getDistance()) {
+					} else if (relement.getCost() > lelement.getCost()) {
 						super.set(spot, (Object) lelement);
 						super.set(lspot, (Object) element);
 						percolateDown(lspot);
@@ -71,8 +71,8 @@ public class PriorityQueueGraph<Object> extends ArrayList<Object> {
 	public void percolateUp(int index) {
 
 		int parentIndex = ((index / 2) + (index % 2) - 1);
-		Path parent = (Path) super.get(parentIndex);
-		if (parent.getDistance() > ((Path) super.get(index)).getDistance()) {
+		Route parent = (Route) super.get(parentIndex);
+		if (parent.getCost() > ((Route) super.get(index)).getCost()) {
 			super.set(parentIndex, super.get(index));
 			super.set(index, (Object) parent);
 			if (parentIndex > 0)
@@ -85,10 +85,10 @@ public class PriorityQueueGraph<Object> extends ArrayList<Object> {
 	 * 
 	 * @return
 	 */
-	public Path peek() {
+	public Route peek() {
 		if (super.size() == 0)
 			return null;
-		return (Path) super.get(0);
+		return (Route) super.get(0);
 
 	}
 
@@ -121,7 +121,7 @@ public class PriorityQueueGraph<Object> extends ArrayList<Object> {
 	 * @param element
 	 * @return if successful
 	 */
-	public boolean remove(Path element) {
+	public boolean remove(Route element) {
 		if (super.contains(element)) {
 			int spot = super.indexOf(element);
 			super.set(spot, super.get(super.size() - 1));

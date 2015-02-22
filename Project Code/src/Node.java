@@ -99,8 +99,8 @@ public class Node {
 	}
 	
 	public Integer getDistCost(Node n){
-		System.out.println(distMap.size());
-		System.out.println(distMap.keySet().toString());
+//		System.out.println(distMap.size());
+//		System.out.println(distMap.keySet().toString());
 		return distMap.get(n);
 	}
 

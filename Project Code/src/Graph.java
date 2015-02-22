@@ -24,15 +24,10 @@ public class Graph {
 	public PriorityQueueGraph<Route> addRoutes() {
 
 		PriorityQueueGraph<Route> fin = new PriorityQueueGraph<Route>();
-		System.out.println("neighbors size"+ start.neighbors.size());
+//		System.out.println("neighbors size"+ start.neighbors.size());
 		// get the neighbor nodes
 		for (Node n : start.getNeighbors()) {
 		
-			// Path p= new Path(start,n,0,5,5);
-			// ArrayList<Node> temp = new ArrayList<Node>();
-			// temp.add(n);
-			// Route r= new Route(temp,p.getDistCost());
-			
 			if (start == root) { // if this start is equal to the first clicked
 
 				ArrayList<Node> temp = new ArrayList<Node>();
@@ -46,33 +41,22 @@ public class Graph {
 				if (start == root) {
 					System.out.println("ditches");
 					System.out.println(n.name);
-//					System.out.println("start interest " + start.interest);
-//					System.out.println("n interest " + n.interest);
 					if (start == n) {
 						System.out.println("penis");
 					}
 				}
-
-				double distCost = start.getDistCost(n);
-
+				int distCost = start.getDistCost(n);
 				Route r = new Route(temp, distCost);
 				fin.add(r);
-
-				
 			}
 
 			else { // start != root
 
 				if (visited != n)
 					for (Route r : fin) {
-
 						r.getList().add(n); // add each node to their routes,
 											// not update cost
-						r.updateCost(start.getDistCost(n)); // update cost
-
-						// System.out.println("routes " +
-						// r.getList().toString());
-
+						r.updateCost(start.getDistCost(n)); // update cost				
 					}
 				else {
 					continue;

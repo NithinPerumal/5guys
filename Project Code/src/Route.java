@@ -18,7 +18,7 @@ public class Route {
 	private double dEstimate;
 	private ArrayList<Node> neighbors;
 	private ArrayList<Node> paths = new ArrayList<Node>();
-	private Double cost = 0.0;
+	private int cost = 0;
 	private ArrayList<Node> completeRoute;
 	
 	HashMap<Double, ArrayList<Node>> finalPath = new HashMap<Double, ArrayList<Node>>();
@@ -31,9 +31,9 @@ public class Route {
 		completeRoute=new ArrayList<Node>();
 	}
 	
-	public Route(ArrayList<Node> routeToTraverse, double distCost){
+	public Route(ArrayList<Node> routeToTraverse, int distCost){
 		this.neighbors = routeToTraverse;
-		System.out.println("distcost " + routeToTraverse);
+		System.out.println("distcost " + routeToTraverse+ distCost);
 		this.cost += distCost;
 	}
 	
@@ -46,7 +46,7 @@ public class Route {
 		return this.paths;
 	}
 	
-	public Double getCost(){
+	public int getCost(){
 		return this.cost;
 	}
 	
@@ -55,99 +55,99 @@ public class Route {
 		return true;
 	}
 
-	public ArrayList<Node> createPaths() {		
-		
-		PriorityQueue<Object> router = new PriorityQueue<Object>();
-	    completeRoute = new ArrayList<Node>();
-		Node checker = this.start;
-		double est=this.start.getDistance(dest)+300;
-		ArrayList<Double> curDistances = new ArrayList<Double>();
-//		double totalDist = 0;
-		while (!checker.name.equals( dest.name) ) {  
-			System.out.println(checker.neighbors.size());
-			for (Node p : checker.neighbors) { 
-//				System.out.println(p.name);// for each node in neighbors
-				Path path = new Path(checker, p, estimate(), 10, 7);  // third and fourth are from text doc
-				
-				if(p.getDistance(dest) < checker.getDistance(dest)){  // prevent from going in opposite direction
-				
-//				if(p.getDistance(dest)<est){
-//					System.out.println("much goat");
-					router.add(path);
-				}				
-//				if(p.coord.y>checker.coord.y)
+//	public ArrayList<Node> createPaths() {		
+//		
+//		PriorityQueue<Object> router = new PriorityQueue<Object>();
+//	    completeRoute = new ArrayList<Node>();
+//		Node checker = this.start;
+//		double est=this.start.getDistance(dest)+300;
+//		ArrayList<Double> curDistances = new ArrayList<Double>();
+////		double totalDist = 0;
+//		while (!checker.name.equals( dest.name) ) {  
+//			System.out.println(checker.neighbors.size());
+//			for (Node p : checker.neighbors) { 
+////				System.out.println(p.name);// for each node in neighbors
+//				Path path = new Path(checker, p, estimate(), 10, 7);  // third and fourth are from text doc
+//				
+//				if(p.getDistance(dest) < checker.getDistance(dest)){  // prevent from going in opposite direction
+//				
+////				if(p.getDistance(dest)<est){
+////					System.out.println("much goat");
 //					router.add(path);
-				/**
-				 * Call best path return dest node of greatest path to take
-				 * while ret(best path) != dest route bestpath() with start
-				 * moved to the ret(best path) should return the priority queue
-				 * of nodes to go to
-				 */
-				
-				
-				
-			}
-//			System.out.println(router.peek().getGoalName());
-			checker = router.poll().getGoalNode(); 
-			System.out.println(checker.name);
-			// changes which one is the current node to be checked and pops off the one on top
-			completeRoute.add(checker);  // adds the current checked one to the complete route
-			router.clear(); 
+//				}				
+////				if(p.coord.y>checker.coord.y)
+////					router.add(path);
+//				/**
+//				 * Call best path return dest node of greatest path to take
+//				 * while ret(best path) != dest route bestpath() with start
+//				 * moved to the ret(best path) should return the priority queue
+//				 * of nodes to go to
+//				 */
+//				
+//				
+//				
+//			}
+////			System.out.println(router.peek().getGoalName());
+//			checker = router.poll().getGoalNode(); 
+//			System.out.println(checker.name);
+//			// changes which one is the current node to be checked and pops off the one on top
+//			completeRoute.add(checker);  // adds the current checked one to the complete route
+//			router.clear(); 
 			
 			// clears the router
 
 			
-		}
-			
-			if(router.peek().getStart() == this.start){  // if this is the start location
-//				ArrayList<Node> 
-				for(Object p : router){  // for each of the first starting paths
-					Path path = (Path) p;
-					finalPath.put(path.getDistCost(), new ArrayList<Node>());  // create the one for the start of the HM with the start dist cost and the start and the AL
-					finalPath.get(path.getDistCost()).add(path.getStart());  // add the start
-					finalPath.get(path.getDistCost()).add(path.getGoalNode());  // add the first stop
-					curDistances.add(path.getDistCost());
-				}
-			}
-			
-			else{ // if this is not the start location
-				// check to see if in curDistances
-				// if yes, then update that one
-				// if not, then add it in to the HM and the curDistance AL
-				
-				for(Object p : router){  // getting each of the different paths
-					Path path = (Path) p;
-					
-					for(int i = 0; i < curDistances.size(); i ++){ // getting and checking values of curDistances
-						if(finalPath.get(curDistances.get(i)) != null){ // make sure that this is actually in here
-							// reset the key
-							
-							ArrayList<Node> tempAr = finalPath.get(curDistances.get(i)); // get the old AL
-							Double tempKey = curDistances.get(i);  // get the old key
-							tempKey += path.getDistCost();  // update the key
-							
-							tempAr.add(path.getGoalNode());  // update the AL
-							finalPath.put(tempKey, tempAr);  // add the updated info
-							
-							// you will not need to remove anything until the very end this way
-							if(p == router.get(router.size() - 1)){
-								finalPath.remove(curDistances.get(i));  // remove this from the HM
-							}
-						}
-						
-						
-					}
-				}
-			}
-			
+//		}
+//			
+//			if(router.peek().getStart() == this.start){  // if this is the start location
+////				ArrayList<Node> 
+//				for(Object p : router){  // for each of the first starting paths
+//					Path path = (Path) p;
+//					finalPath.put(path.getDistCost(), new ArrayList<Node>());  // create the one for the start of the HM with the start dist cost and the start and the AL
+//					finalPath.get(path.getDistCost()).add(path.getStart());  // add the start
+//					finalPath.get(path.getDistCost()).add(path.getGoalNode());  // add the first stop
+//					curDistances.add(path.getDistCost());
+//				}
+//			}
+//			
+//			else{ // if this is not the start location
+//				// check to see if in curDistances
+//				// if yes, then update that one
+//				// if not, then add it in to the HM and the curDistance AL
+//				
+//				for(Object p : router){  // getting each of the different paths
+//					Path path = (Path) p;
+//					
+//					for(int i = 0; i < curDistances.size(); i ++){ // getting and checking values of curDistances
+//						if(finalPath.get(curDistances.get(i)) != null){ // make sure that this is actually in here
+//							// reset the key
+//							
+//							ArrayList<Node> tempAr = finalPath.get(curDistances.get(i)); // get the old AL
+//							Double tempKey = curDistances.get(i);  // get the old key
+//							tempKey += path.getDistCost();  // update the key
+//							
+//							tempAr.add(path.getGoalNode());  // update the AL
+//							finalPath.put(tempKey, tempAr);  // add the updated info
+//							
+//							// you will not need to remove anything until the very end this way
+//							if(p == router.get(router.size() - 1)){
+//								finalPath.remove(curDistances.get(i));  // remove this from the HM
+//							}
+//						}
+//						
+//						
+//					}
+//				}
+//			}
+//			
 	
 			
 //			totalDist += router.peek().getDistCost();
 			
-			checker = router.poll().getGoalNode();  // changes which one is the current node to be checked and pops off the one on top
-			completeRoute.add(checker);  // adds the current checked one to the complete route
-			router.clear();  // clears the router
-//		}
+//			checker = router.poll().getGoalNode();  // changes which one is the current node to be checked and pops off the one on top
+//			completeRoute.add(checker);  // adds the current checked one to the complete route
+//			router.clear();  // clears the router
+////		}
 		/*
 		 * 	Iterate through the first d nodes,
 		 *  and calculate the distance
@@ -159,9 +159,9 @@ public class Route {
 ////			totalDist += completeRoute.peek().getDistance(neighbor)
 //			
 //		}
-		System.out.println("size of route "+ completeRoute.size());
-		return completeRoute;
-	}
+//		System.out.println("size of route "+ completeRoute.size());
+//		return completeRoute;
+//	}
 
 
 	public String toString(){
