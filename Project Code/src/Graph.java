@@ -18,6 +18,7 @@ public class Graph {
 
 	public ArrayList<Node> bestPath() {
 		PriorityQueueGraph<Route> answer = this.addRoutes();
+		System.out.println(answer.size());
 		return answer.poll().getList();
 	}
 
@@ -73,6 +74,7 @@ public class Graph {
 				break;
 			}
 		}
+		
 		return fin;
 	}
 

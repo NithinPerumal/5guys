@@ -49,7 +49,6 @@ public class homePanel {
 				System.out.println("City Selects: " + sel.get(0).name);
 				Node node1 = sel.get(0);
 				Node node2 = sel.get(1);
-				System.out.println("hey");
 				if (node1 != null && node2 != null){
 					System.out.println("got here");
 					Graph finder = new Graph(node1, node1, node2);
@@ -57,6 +56,7 @@ public class homePanel {
 					ArrayList<Node> route = new ArrayList<Node>();
 //					finder.findRoute(visited, node1, route);
 					route = finder.bestPath();
+					System.out.println("da answer is" +route.toString());
 //					Route r = new Route(node1,node2);
 //					route=r.createPaths();
 					String temp = "";
