@@ -33,8 +33,11 @@ public class Route {
 	
 	public Route(ArrayList<Node> routeToTraverse, int distCost){
 		this.neighbors = routeToTraverse;
-		System.out.println("distcost " + routeToTraverse+ distCost);
 		this.cost += distCost;
+	}
+	public Route(Node n, int distCost){
+		this.paths.add(n);
+		this.cost+=distCost;
 	}
 	
 //	public Route(ArrayList<Path> paths, Double pathCost){
