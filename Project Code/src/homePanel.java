@@ -71,7 +71,7 @@ public class homePanel {
 				if (button.getText().equals("Get Path by Interest")) {
 					if (node1 != null && node2 != null) {
 						Graph finder = new Graph(node1, node1, node2);
-						ArrayList<Node> route = finder.bestPath();
+						ArrayList<Node> route = finder.mostInteresting();
 						// System.out.println("da answer is" +
 						// route.toString());
 						// Route r = new Route(node1,node2);
