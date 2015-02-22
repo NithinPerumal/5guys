@@ -4,13 +4,17 @@ Bangalore	Trivandrum	90
 Agra		Delhi			120
 **
 Hyderabad	Bangalore	160
+Hyderabad	Trivandrum	300
 **
 Chennai		Trivandrum		140
+Chennai		Bangalore		500
 **
 Trivandrum	Hyderabad	200
+Trivandrum	Chennai		500
 **
 Delhi		Amritsar		160
 Delhi		Agra			100
 **
 Amritsar	Bangalore		400
+Amritsar	Delhi			150
 **
