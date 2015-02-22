@@ -12,11 +12,8 @@ public class Node {
 	int radius;
 	private Ellipse2D.Double dot;
 	private Color color = Color.BLACK;
-	// private String cityName;
 	private ArrayList<String> landmarks = new ArrayList<String>();
 	private ArrayList<String> Stringneighbours = new ArrayList<String>();
-	private int x;
-	private int y;
 	HashMap<Node, Integer> distMap = new HashMap<Node, Integer>();
 	int interest;
 
@@ -99,13 +96,11 @@ public class Node {
 	}
 	
 	public Integer getDistCost(Node n){
-//		System.out.println(distMap.size());
-//		System.out.println(distMap.keySet().toString());
 		return distMap.get(n);
 	}
 
 	public int getInterest() {
-		// TODO Auto-generated method stub
+		
 		return this.interest;
 	}
 	public ArrayList<String> getLandmarks(){

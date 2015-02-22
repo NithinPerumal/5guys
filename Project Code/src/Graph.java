@@ -1,19 +1,13 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Queue;
 
 public class Graph {
 	private Node start;
 	private Node finish;
-	private Node root;
-	private ArrayList<Node> visited;
-	private ArrayList<Node> route;
 	ArrayList<Route> possibles = new ArrayList<Route>();
 	PriorityQueueGraph<Route> answer;
 	PriorityQueueInterest<Route> interests;
 
 	public Graph(Node root, Node begin, Node end) {
-		this.root = root;
 		start = begin;
 		finish = end;
 		answer=new PriorityQueueGraph<Route>();

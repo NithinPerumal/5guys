@@ -1,8 +1,6 @@
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
 
 
 
@@ -16,7 +14,6 @@ public class Route {
 	private Node start;
 	private Node dest;
 	private double dEstimate;
-	private ArrayList<Node> neighbors;
 	private ArrayList<Node> paths = new ArrayList<Node>();
 	private int cost = 0;
 	private int interest;
@@ -28,7 +25,7 @@ public class Route {
 	public Route(Node starter, Node finish) {
 		start = starter;
 		dest = finish;
-		neighbors = start.getNeighbors();
+		start.getNeighbors();
 		dEstimate = estimate();
 		completeRoute=new ArrayList<Node>();
 		interest = starter.interest + finish.interest;
