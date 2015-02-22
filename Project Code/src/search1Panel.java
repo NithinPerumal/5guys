@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -11,8 +12,10 @@ import javax.swing.JTextArea;
 
 public class search1Panel {
 	JPanel side;
+	ArrayList<Node> list;
 	
-	public search1Panel(){
+	public search1Panel(ArrayList<Node> cities){
+		list = cities;
 		side = new JPanel();
 		side.setBackground(Color.BLACK);
 		side.setPreferredSize(new Dimension(150,500));
@@ -32,6 +35,11 @@ public class search1Panel {
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		side.add(scrollPane);
 		textArea.setEditable(false);
+	}
+	
+	private ArrayList<Node> sort(ArrayList<Node> list){
+		
+		return null;
 	}
 
 }

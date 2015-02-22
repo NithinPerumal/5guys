@@ -57,6 +57,7 @@ public class Graph {
 					for (Route r : fin) {
 						r.getList().add(n); // add each node to their routes,
 											// not update cost
+						new Graph(root, n, finish).addRoutes();
 						r.updateCost(start.getDistCost(n)); // update cost				
 					}
 				else {

@@ -4,9 +4,11 @@ import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.border.Border;
 
 
 public class topBar {
@@ -15,7 +17,8 @@ public class topBar {
 	public topBar(ActionListener listener){
 		menubar = new JMenuBar();
 		menubar.setBackground(Color.BLACK);
-		//menubar.setBackground(Color.BLUE);
+		Border border1 = BorderFactory.createLineBorder(Color.red);
+		menubar.setBorder(border1);
 		JMenu menu = new JMenu("Home");
 		menu.setForeground(Color.RED);
 		JMenu menu2 = new JMenu("Trip Planner");
@@ -49,7 +52,7 @@ public class topBar {
 		menubar.add(menu);
 		menubar.add(menu2);
 		menubar.add(menu3);
-		menubar.setPreferredSize(new Dimension(1000, 20));
+		menubar.setPreferredSize(new Dimension(1200, 20));
 		
 		
 	}

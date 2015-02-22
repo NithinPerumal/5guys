@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -18,14 +20,16 @@ public class homePanel {
 	JPanel side;
 	ArrayList<Node> list;
 	mapPanel citySelects;
+	JTextArea textArea = new JTextArea(5, 10);
 	
 	public homePanel(ArrayList<Node> cities, mapPanel selects){
+		mouseListener mouse = new mouseListener();
 		list = cities;
 		citySelects = selects;
 		side = new JPanel();
+		side.addMouseListener(mouse);
 		side.setBackground(Color.BLACK);
 		side.setPreferredSize(new Dimension(150,1000));
-		JTextArea textArea = new JTextArea(5, 10);
 		//JScrollPane scrollPane = new JScrollPane(textArea); 
 		textArea.setEditable(false);
 		textArea.setBackground(Color.BLACK);
@@ -36,7 +40,7 @@ public class homePanel {
 		String paths = "This is a test here \n is a path a whole new \n path maybe another";
 		final JTextArea textArea1 = new JTextArea(paths, 10, 10);
 		//JScrollPane scrollPane = new JScrollPane(textArea); 
-		textArea.setEditable(false);
+		textArea1.setEditable(false);
 		textArea1.setBackground(Color.BLACK);
 		textArea1.setForeground(Color.WHITE);
 		Border border2 = BorderFactory.createLineBorder(Color.red);
@@ -75,4 +79,30 @@ public class homePanel {
 		side.add(button);
 	}
 	
+	private class mouseListener implements MouseListener {
+
+		public void mouseClicked(MouseEvent e) {
+			ArrayList<Node> sel = citySelects.getSelect();
+			if (sel.get(0) != null && sel.get(1) == null){
+				textArea.setText(sel.get(0).name);
+			}
+
+		}
+
+		public void mouseEntered(MouseEvent e) {
+
+		}
+
+		public void mouseExited(MouseEvent e) {
+
+		}
+
+		public void mousePressed(MouseEvent e) {
+
+		}
+
+		public void mouseReleased(MouseEvent e) {
+
+		}
+	}
 }

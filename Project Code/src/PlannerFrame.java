@@ -16,7 +16,7 @@ public class PlannerFrame {
 	public static void main(String[] args) {
 		int width = 1200;
 		int height = 833;
-		final JFrame background = new JFrame();
+		final JFrame background = new JFrame("India Trip Planner");
 		background.setSize(width, height);
 		final JPanel back = new JPanel();
 		back.setLayout(new BorderLayout());
@@ -54,7 +54,7 @@ public class PlannerFrame {
 					back.validate();
 				}
 				if (name == "City"){
-					search1Panel search1 = new search1Panel();
+					search1Panel search1 = new search1Panel(cities);
 					back.remove(sidePanel);
 					sidePanel.removeAll();
 					sidePanel.add(search1.side);
