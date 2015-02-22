@@ -50,10 +50,16 @@ public class mapPanel extends JComponent {
 		for (int i=0; i<list.size(); i++){
 			ArrayList<Node> neighbors = neighborsMap.get(list.get(i));
 			for (int j=0; j<neighbors.size(); j++){
-				g2.setColor(Color.black);
+				g2.setColor(Color.BLACK);
 				g.drawLine((int)list.get(i).getXCoord()+7, (int)list.get(i).getYCoord()+10, (int)neighbors.get(j).getXCoord()+7, (int)neighbors.get(j).getYCoord()+10);
+				int xDiff = ((int)list.get(i).getXCoord()+7 +(int)neighbors.get(j).getXCoord()+7) / 2 ;
+				int yDiff = ((int)list.get(i).getYCoord()+10+ (int)neighbors.get(j).getYCoord()+10) / 2;
+				HashMap<Node, Integer> distances = list.get(i).distMap;
+				g2.setColor(Color.WHITE);
+				g.drawString(distances.get(neighbors.get(j)).toString(), xDiff, yDiff);
 			}
 			list.get(i).draw(g2, 15);
+			g2.setColor(Color.WHITE);
 			g.drawString(list.get(i).name, (int)list.get(i).getXCoord(), (int)list.get(i).getYCoord() + 30);
 		}
 	}
