@@ -60,7 +60,7 @@ public class homePanel {
 					ArrayList<Node> route = new ArrayList<Node>();
 //					finder.findRoute(visited, node1, route);
 					route = finder.bestPath();
-					System.out.println("da answer is" +route.toString());
+//					System.out.println("da answer is" + route.toString());
 //					Route r = new Route(node1,node2);
 //					route=r.createPaths();
 					String temp = "";

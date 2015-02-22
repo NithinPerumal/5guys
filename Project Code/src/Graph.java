@@ -20,6 +20,10 @@ public class Graph {
 	public ArrayList<Node> bestPath() {
 		PriorityQueueGraph<Route> answer = this.addRoutes();
 		System.out.println(answer.size());
+		if(answer.peek() == null){
+			System.out.println("penis");
+			return null;
+		}
 		return answer.poll().getList();
 	}
 
@@ -32,6 +36,7 @@ public class Graph {
 	    options(start);
 		System.out.println(possibles.size()+"much goat");
 		for (Route r : possibles) {
+			
 			if (r.getList().get(r.getList().size() - 1).name
 					.equals(finish.name))
 				fin.add(r);
@@ -39,74 +44,42 @@ public class Graph {
 
 		return fin;
 
-		// for (Node n : start.getNeighbors()) {
-		//
-		// if (start == root) { // if this start is equal to the first clicked
-		//
-		// ArrayList<Node> temp = new ArrayList<Node>();
-		// // Path p = new Path(start, n, 0, 5, 5);
-		// temp.add(start);
-		// temp.add(n);
-		//
-		// if (start == null) {
-		// System.out.println("bitches");
-		// }
-		// if (start == root) {
-		// System.out.println("ditches");
-		// System.out.println(n.name);
-		// if (start == n) {
-		// System.out.println("penis");
-		// }
-		// }
-		// int distCost = start.getDistCost(n);
-		// Route r = new Route(temp, distCost);
-		// fin.add(r);
-		// }
-		//
-		// else { // start != root
-		//
-		// if (visited != n)
-		// for (Route r : fin) {
-		// r.getList().add(n); // add each node to their routes,
-		// // not update cost
-		// r.updateCost(start.getDistCost(n)); // update cost
-		// }
-		// else {
-		// continue;
-		// }
-		//
-		// }
-		//
-		// if(n.name.equalsIgnoreCase(start.neighbors.get(start.neighbors.size()-1).name)){
-		// visited = start;
-		// start = n;
-		// }
-		//
-		// if (start == finish) {
-		// break;
-		// }
-		// }
-		//
-		// return fin;
+		
 	}
 
 	public void options(Node n) {
 		System.out.println(n.neighbors.size());
 //		ArrayList<Route> temp = new ArrayList<Route>();
-		if (n == finish)
+		if (n.name.equalsIgnoreCase(finish.name))
 			return;
 		for (Node t : n.neighbors) {
 			System.out.println("hola");
 			if (n == this.root) {
+				System.out.println("cur n " + n.toString());
 				int dist=n.getDistCost(t);
 				Route r= new Route(t,dist);
 				possibles.add(r);
 //				temp.addAll(options(t));
 				
+				
+				
 			} else {
+				for(Route rr:possibles){  // for each route in possibles
+					System.out.println("cur n " + n.toString());
+					System.out.println("cur route stops " + rr.toString());
+					rr.getList().add(t);  // get the list of nodes in the route and add t
+					rr.getVisited().add(n);  // say that n is in the list of visited nodes
+					rr.updateCost(n.getDistCost(t));  // update the distcost
+					
+					
+					if(!rr.getVisited().contains(n))  // if n is not in the visited AL
+						options(t);
+				}
+				options(t);
 //				Route rr= new Route()
 //				temp.addAll(options(t));
 			}
+			
 		}
 		
 

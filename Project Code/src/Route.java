@@ -19,7 +19,8 @@ public class Route {
 	private ArrayList<Node> neighbors;
 	private ArrayList<Node> paths = new ArrayList<Node>();
 	private int cost = 0;
-	private ArrayList<Node> completeRoute;
+	private ArrayList<Node> completeRoute = new ArrayList<Node>();
+	private ArrayList<Node> visited = new ArrayList<Node>();
 	
 	HashMap<Double, ArrayList<Node>> finalPath = new HashMap<Double, ArrayList<Node>>();
 
@@ -56,6 +57,10 @@ public class Route {
 	public boolean updateCost(Integer cost){
 		this.cost += cost;
 		return true;
+	}
+	
+	public ArrayList<Node> getVisited(){
+		return this.visited;
 	}
 
 //	public ArrayList<Node> createPaths() {		
@@ -168,7 +173,10 @@ public class Route {
 
 
 	public String toString(){
-		return this.completeRoute.toString();
+		if(completeRoute == null){
+			System.out.println("complete route is null");
+		}
+		return this.paths.toString();
 	}
 	private double estimate() {
 		Point a = start.getCoord();
