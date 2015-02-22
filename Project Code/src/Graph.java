@@ -32,7 +32,7 @@ public class Graph {
 			// ArrayList<Node> temp = new ArrayList<Node>();
 			// temp.add(n);
 			// Route r= new Route(temp,p.getDistCost());
-			System.out.println("GOING THROUGH");
+			
 			if (start == root) { // if this start is equal to the first clicked
 
 				ArrayList<Node> temp = new ArrayList<Node>();
@@ -59,7 +59,6 @@ public class Graph {
 				fin.add(r);
 
 				
-				continue;
 			}
 
 			else { // start != root
@@ -81,8 +80,10 @@ public class Graph {
 
 			}
 
-			start = n;
-			visited = n;
+			if(n.name.equalsIgnoreCase(start.neighbors.get(start.neighbors.size()-1).name)){
+				visited = start;
+				start = n;
+			}
 
 			if (start == finish) {
 				break;
