@@ -10,13 +10,14 @@ public class Graph {
 	private ArrayList<Node> route;
 	ArrayList<Route> possibles = new ArrayList<Route>();
 	PriorityQueueGraph<Route> answer;
+	PriorityQueueInterest<Route> interests;
 
 	public Graph(Node root, Node begin, Node end) {
 		this.root = root;
 		start = begin;
 		finish = end;
 		answer=new PriorityQueueGraph<Route>();
-
+		interests = new PriorityQueueInterest<Route>();
 	}
 
 	public ArrayList<Node> bestPath() {

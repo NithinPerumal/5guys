@@ -19,6 +19,7 @@ public class Route {
 	private ArrayList<Node> neighbors;
 	private ArrayList<Node> paths = new ArrayList<Node>();
 	private int cost = 0;
+	private int interest;
 	private ArrayList<Node> completeRoute = new ArrayList<Node>();
 	private ArrayList<Node> visited = new ArrayList<Node>();
 	
@@ -30,6 +31,7 @@ public class Route {
 		neighbors = start.getNeighbors();
 		dEstimate = estimate();
 		completeRoute=new ArrayList<Node>();
+		interest = starter.interest + finish.interest;
 	}
 	
 	public Route(ArrayList<Node> routeToTraverse, int distCost){
@@ -39,6 +41,9 @@ public class Route {
 	public Route(Node n, int distCost){
 		this.paths.add(n);
 		this.cost+=distCost;
+		for(int i = 0; i < paths.size(); i ++){
+			interest += paths.get(i).interest;
+		}
 	}
 	
 
@@ -60,7 +65,9 @@ public class Route {
 		return this.visited;
 	}
 
-
+	public int getInterest(){
+		return this.interest;
+	}
 
 
 	public String toString(){
