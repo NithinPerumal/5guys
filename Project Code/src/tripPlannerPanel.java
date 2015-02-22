@@ -1,25 +1,17 @@
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
-import javax.swing.plaf.metal.MetalComboBoxButton;
 
 
 public class tripPlannerPanel {
@@ -38,6 +30,7 @@ public class tripPlannerPanel {
 		for (int i=0; i<cities.size(); i++){
 			cityStrings[i] = cities.get(i).name;
 		}
+		
 		String destinations = "";
 		final JTextArea textArea = new JTextArea(destinations, 10, 10);
 		JScrollPane scrollPane = new JScrollPane(textArea); 
@@ -61,10 +54,12 @@ public class tripPlannerPanel {
 					int distanceWanted = Integer.parseInt(distance.getText());
 					found = findDistance(city, distanceWanted);
 				}
-				String temp = "Nothing found";
+				String temp = "";
 				for (int j=0; j<found.size(); j++){
-					System.out.println(found.get(j));
 					temp = temp + found.get(j) +"\n";
+				}
+				if (found.size() == 0){
+					temp = "Nothing found";
 				}
 				textArea.setText(temp);
 			}
@@ -78,7 +73,7 @@ public class tripPlannerPanel {
 		cityList.setLightWeightPopupEnabled(false);
 		side.add(cityList);
 		
-		JLabel timeLabel = new JLabel("Enter a time to travel:");
+		JLabel timeLabel = new JLabel("Enter an intrest level:");
 		timeLabel.setForeground(Color.RED);
 		side.add(timeLabel);
 		time = new TextField(10);
