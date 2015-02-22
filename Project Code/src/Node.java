@@ -104,4 +104,9 @@ public class Node {
 		return distMap.get(n);
 	}
 
+	public int getInterest() {
+		// TODO Auto-generated method stub
+		return this.interest;
+	}
+
 }

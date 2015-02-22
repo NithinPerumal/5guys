@@ -25,8 +25,32 @@ public class Graph {
 		findPath( aj ,0,start);
 		return answer.poll().getList();
 	}
+	
+	public ArrayList<Node> mostInteresting(){
+		ArrayList<Node> aj = new ArrayList<Node>();
+		aj.add(start);
+		findMostInteresting(aj, start.getInterest(), start);
+		return answer.poll().getList();
+	}
 
 	
+	private void findMostInteresting(ArrayList<Node> nodes, int interest, Node current) {
+		for(Node n:current.neighbors){
+			if(current.name.equals(finish.name)){
+				Route r= new Route(nodes,interest);
+				answer.add(r);
+			}
+			if(!nodes.contains(n)){
+				ArrayList<Node> temp=new ArrayList<Node>();
+				temp.addAll(nodes);
+				temp.add(n);
+				findPath(temp,interest+n.getInterest(),n);
+			}
+			
+		}
+		
+	}
+
 	public  void findPath(ArrayList<Node> nodes,int cost,Node current){
 		for(Node n:current.neighbors){
 			if(current.name.equals(finish.name)){
