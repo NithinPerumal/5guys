@@ -40,6 +40,7 @@ public class PlannerFrame {
 		homePanel home = new homePanel(cities, mapP);
 		sidePanel.add(home.side);
 		back.add(sidePanel, BorderLayout.LINE_END);
+		mapP.addHomePanel(home);
 		
 		ActionListener topBarListener = new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -63,6 +64,7 @@ public class PlannerFrame {
 				}
 				if (name == "Home"){
 					homePanel home = new homePanel(cities, mapP);
+					mapP.addHomePanel(home);
 					back.remove(sidePanel);
 					sidePanel.removeAll();
 					sidePanel.add(home.side);

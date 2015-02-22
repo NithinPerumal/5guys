@@ -108,5 +108,8 @@ public class Node {
 		// TODO Auto-generated method stub
 		return this.interest;
 	}
+	public ArrayList<String> getLandmarks(){
+		return this.landmarks;
+	}
 
 }

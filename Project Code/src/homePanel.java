@@ -8,29 +8,26 @@ import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.border.Border;
-
 
 public class homePanel {
 	JPanel side;
 	ArrayList<Node> list;
+	ArrayList<Node> route;
 	mapPanel citySelects;
 	JTextArea textArea = new JTextArea(5, 10);
-	
-	public homePanel(ArrayList<Node> cities, mapPanel selects){
+
+	public homePanel(ArrayList<Node> cities, mapPanel selects) {
 		mouseListener mouse = new mouseListener();
 		list = cities;
 		citySelects = selects;
 		side = new JPanel();
 		side.addMouseListener(mouse);
 		side.setBackground(Color.BLACK);
-		side.setPreferredSize(new Dimension(150,1000));
-		//JScrollPane scrollPane = new JScrollPane(textArea); 
+		side.setPreferredSize(new Dimension(150, 1000));
+		// JScrollPane scrollPane = new JScrollPane(textArea);
 		textArea.setEditable(false);
 		textArea.setBackground(Color.BLACK);
 		textArea.setForeground(Color.WHITE);
@@ -39,52 +36,83 @@ public class homePanel {
 		side.add(textArea);
 		String paths = "";
 		final JTextArea textArea1 = new JTextArea(paths, 10, 10);
-		//JScrollPane scrollPane = new JScrollPane(textArea); 
+		// JScrollPane scrollPane = new JScrollPane(textArea);
 		textArea1.setEditable(false);
 		textArea1.setBackground(Color.BLACK);
 		textArea1.setForeground(Color.WHITE);
 		Border border2 = BorderFactory.createLineBorder(Color.red);
 		textArea1.setBorder(border2);
 		side.add(textArea1);
-		ActionListener buttonListener = new ActionListener(){
+		ActionListener buttonListener = new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<Node> sel = citySelects.getSelect();
 				System.out.println("City Selects: " + sel.get(0).name);
 				Node node1 = sel.get(0);
 				Node node2 = sel.get(1);
-				if (node1 != null && node2 != null){
-					Graph finder = new Graph(node1, node1, node2);
-					ArrayList<Node> route = finder.bestPath();
-//					System.out.println("da answer is" + route.toString());
-//					Route r = new Route(node1,node2);
-//					route=r.createPaths();
-					String temp = "";
-					System.out.println(route.size());
-					for (int j=0; j<route.size(); j++){
-						System.out.println(route.get(j));
-						temp = temp + route.get(j) +"\n";
+				JButton button = (JButton) e.getSource();
+				if (button.getText().equals("Get Path by Distance")) {
+					if (node1 != null && node2 != null) {
+						Graph finder = new Graph(node1, node1, node2);
+						ArrayList<Node> route = finder.bestPath();
+						// System.out.println("da answer is" +
+						// route.toString());
+						// Route r = new Route(node1,node2);
+						// route=r.createPaths();
+						String temp = "";
+						System.out.println(route.size());
+						for (int j = 0; j < route.size(); j++) {
+							System.out.println(route.get(j));
+							temp = temp + route.get(j) + "\n";
+						}
+						textArea1.setText(temp);
 					}
-					textArea1.setText(temp);
+				}
+				if (button.getText().equals("Get Path by Interest")) {
+					if (node1 != null && node2 != null) {
+						Graph finder = new Graph(node1, node1, node2);
+						ArrayList<Node> route = finder.bestPath();
+						// System.out.println("da answer is" +
+						// route.toString());
+						// Route r = new Route(node1,node2);
+						// route=r.createPaths();
+						String temp = "";
+						System.out.println(route.size());
+						for (int j = 0; j < route.size(); j++) {
+							System.out.println(route.get(j));
+							temp = temp + route.get(j) + "\n";
+						}
+						textArea1.setText(temp);
+					}
 				}
 			}
-			
+
 		};
-		JButton button = new JButton("Get Path");
-		button.setBackground(Color.BLACK);
-		button.setForeground(Color.RED);
-		button.addActionListener(buttonListener);
-		side.add(button);
+		JButton button1 = new JButton("Get Path by Distance");
+		button1.setBackground(Color.BLACK);
+		button1.setForeground(Color.RED);
+		button1.addActionListener(buttonListener);
+		side.add(button1);
+		JButton button2 = new JButton("Get Path by Interest");
+		button2.setBackground(Color.BLACK);
+		button2.setForeground(Color.RED);
+		button2.addActionListener(buttonListener);
+		side.add(button2);
 	}
-	
+
 	private class mouseListener implements MouseListener {
 
 		public void mouseClicked(MouseEvent e) {
 			ArrayList<Node> sel = citySelects.getSelect();
-			if (sel.get(0) != null && sel.get(1) == null){
-				textArea.setText(sel.get(0).name);
+			if (sel.get(0) != null && sel.get(1) == null) {
+				String info = "City: " + "\n" + sel.get(0).name;
+				info = info + "\n" + "Landmarks: ";
+				for (int i = 0; i < sel.get(0).getLandmarks().size(); i++) {
+					System.out.println("hello");
+					info += "\n" + sel.get(0).getLandmarks().get(i);
+				}
+				textArea.setText(info);
 			}
-
 		}
 
 		public void mouseEntered(MouseEvent e) {

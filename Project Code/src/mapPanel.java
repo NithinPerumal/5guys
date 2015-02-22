@@ -19,6 +19,7 @@ public class mapPanel extends JComponent {
 	Graphics2D g2;
 	Node select1;
 	Node select2;
+	homePanel routes = null;
 
 	public mapPanel(ArrayList<Node> cities, HashMap<Node, ArrayList<Node>> neighborMap) {
 		mouseListener mouse = new mouseListener();
@@ -38,7 +39,6 @@ public class mapPanel extends JComponent {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g2 = (Graphics2D) g;
-		g2.setColor(Color.green);
 		BufferedImage img = null;
 		try {
 			img = ImageIO.read(new File("mapOfIndia.jpg"));
@@ -46,17 +46,17 @@ public class mapPanel extends JComponent {
 			e.printStackTrace();
 		}
 		g.drawImage(img, 0, 0, null);
-//		g.fillRect(0, 0, getWidth(), getHeight());
 		for (int i=0; i<list.size(); i++){
 			ArrayList<Node> neighbors = neighborsMap.get(list.get(i));
 			for (int j=0; j<neighbors.size(); j++){
 				g2.setColor(Color.BLACK);
-				g.drawLine((int)list.get(i).getXCoord()+7, (int)list.get(i).getYCoord()+10, (int)neighbors.get(j).getXCoord()+7, (int)neighbors.get(j).getYCoord()+10);
-				int xDiff = ((int)list.get(i).getXCoord()+7 +(int)neighbors.get(j).getXCoord()+7) / 2 ;
-				int yDiff = ((int)list.get(i).getYCoord()+10+ (int)neighbors.get(j).getYCoord()+10) / 2;
-				HashMap<Node, Integer> distances = list.get(i).distMap;
-				g2.setColor(Color.RED);
-//				g.drawString(distances.get(neighbors.get(j)).toString(), xDiff+5, yDiff);
+				//Magic numbers for lining up the endpoints of the line
+				//The circle's radius does adjust properly for these lines
+				int x1 = (int)list.get(i).getXCoord()+7;
+				int x2 = (int)neighbors.get(j).getXCoord()+7;
+				int y1 = (int)list.get(i).getYCoord()+10;
+				int y2 = (int)neighbors.get(j).getYCoord()+10;
+				g.drawLine(x1,y1,x2,y2);
 			}
 			
 		}
@@ -65,6 +65,20 @@ public class mapPanel extends JComponent {
 			g2.setColor(Color.WHITE);
 			g.drawString(list.get(k).name, (int)list.get(k).getXCoord(), (int)list.get(k).getYCoord() + 30);
 		}
+		if (routes != null){
+			if (routes.route != null){
+			for (int i=1; i<routes.route.size(); i++){
+				g2.setColor(Color.RED);
+				System.out.println("hello");
+				int x1 = (int) routes.route.get(i -1).getXCoord();
+				int y1 = (int) routes.route.get(i - 1).getYCoord();
+				int x2 = (int) routes.route.get(i).getXCoord();
+				int y2 = (int) routes.route.get(i).getYCoord();
+				g.drawLine(x1, y1, x2, y2);
+			}
+			}
+			System.out.println("bye");
+		}
 	}
 	
 	public ArrayList<Node> getSelects(){
@@ -72,6 +86,10 @@ public class mapPanel extends JComponent {
 		selects.add(select1);
 		selects.add(select2);
 		return selects;
+	}
+	
+	public void addHomePanel(homePanel route){
+		routes = route;
 	}
 
 	private class mouseListener implements MouseListener {
@@ -110,21 +128,21 @@ public class mapPanel extends JComponent {
 		}
 
 		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
+			//Nothing done
 
 		}
 
 		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
+			//Nothing done
 
 		}
 
 		public void mousePressed(MouseEvent e) {
-
+			//Nothing done
 		}
 
 		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
+			//Nothing done
 
 		}
 
