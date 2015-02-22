@@ -27,18 +27,23 @@ public class homePanel {
 		side.addMouseListener(mouse);
 		side.setBackground(Color.BLACK);
 		side.setPreferredSize(new Dimension(150, 1000));
+		
+		//First city info text area
 		textArea.setEditable(false);
 		textArea.setBackground(Color.BLACK);
 		textArea.setForeground(Color.WHITE);
 		Border border1 = BorderFactory.createLineBorder(Color.red);
 		textArea.setBorder(border1);
 		side.add(textArea);
+		
+		//Path to destination info
 		String paths = "";
 		final JTextArea textArea1 = new JTextArea(paths, 10, 10);
 		textArea1.setEditable(false);
 		textArea1.setBackground(Color.BLACK);
 		textArea1.setForeground(Color.WHITE);
 		Border border2 = BorderFactory.createLineBorder(Color.red);
+		
 		textArea1.setBorder(border2);
 		side.add(textArea1);
 		ActionListener buttonListener = new ActionListener() {
@@ -73,11 +78,13 @@ public class homePanel {
 			}
 
 		};
+		//Setting up get path buttons
 		JButton button1 = new JButton("Get Path by Distance");
 		button1.setBackground(Color.BLACK);
 		button1.setForeground(Color.RED);
 		button1.addActionListener(buttonListener);
 		side.add(button1);
+		
 		JButton button2 = new JButton("Get Path by Interest");
 		button2.setBackground(Color.BLACK);
 		button2.setForeground(Color.RED);

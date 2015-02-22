@@ -38,6 +38,7 @@ public class tripPlannerPanel {
 		for (int i=0; i<cities.size(); i++){
 			cityStrings[i] = cities.get(i).name;
 		}
+		
 		String destinations = "";
 		final JTextArea textArea = new JTextArea(destinations, 10, 10);
 		JScrollPane scrollPane = new JScrollPane(textArea); 

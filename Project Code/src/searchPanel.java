@@ -20,14 +20,19 @@ public class searchPanel {
 	ArrayList<Node> list;
 	
 	public searchPanel(ArrayList<Node> cities){
+		//Setting up the pane;
 		list = sort(cities);
 		side = new JPanel();
 		side.setBackground(Color.BLACK);
 		side.setPreferredSize(new Dimension(150,500));
+		
+		//Putting a label
 		JLabel interestingnessLabel = new JLabel("Interestingness");
 		interestingnessLabel.setBackground(Color.BLACK);
 		interestingnessLabel.setForeground(Color.RED);
 		side.add(interestingnessLabel);
+		
+		//Setting up text area for info
 		final JTextArea textArea = new JTextArea(8, 10);
 		textArea.setBackground(Color.BLACK);
 		textArea.setForeground(Color.WHITE);
@@ -53,6 +58,7 @@ public class searchPanel {
 			}
 			
 		};
+		//Setting up Radio buttons
 		ButtonGroup group = new ButtonGroup();
 		JRadioButton most = new JRadioButton("Most to Least");
 		most.addActionListener(buttonListener);
@@ -60,12 +66,15 @@ public class searchPanel {
 		most.setForeground(Color.RED);
 		group.add(most);
 		side.add(most);
+		
 		JRadioButton least = new JRadioButton("Least to Most");
 		least.addActionListener(buttonListener);
 		least.setBackground(Color.BLACK);
 		least.setForeground(Color.RED);
 		group.add(least);
 		side.add(least);
+		
+		//Setting up initial list going from most interesting to least interesting
 		String temp = "";
 		for (int i=0; i<list.size(); i++){
 			temp = temp + list.get(i) +"\n";
@@ -75,31 +84,6 @@ public class searchPanel {
 		side.add(scrollPane);
 		textArea.setEditable(false);
 		
-		//Search for path
-		JLabel costLabel = new JLabel("       Cost       ");
-		costLabel.setBackground(Color.BLACK);
-		costLabel.setForeground(Color.RED);
-		side.add(costLabel);
-		ButtonGroup group2 = new ButtonGroup();
-		JRadioButton distance = new JRadioButton("distance");
-		distance.setBackground(Color.BLACK);
-		distance.setForeground(Color.RED);
-		group2.add(distance);
-		side.add(distance);
-		JRadioButton time = new JRadioButton("Interestingness");
-		time.setBackground(Color.BLACK);
-		time.setForeground(Color.RED);
-		group2.add(time);
-		side.add(time);
-		
-		JTextArea textArea2 = new JTextArea(8, 10);
-		JScrollPane scrollPane2 = new JScrollPane(textArea2);
-		textArea2.setBackground(Color.BLACK);
-		textArea2.setForeground(Color.WHITE);
-		Border border2 = BorderFactory.createLineBorder(Color.red);
-		textArea.setBorder(border2);
-		side.add(scrollPane2);
-		textArea2.setEditable(false);
 	}
 	
 	private ArrayList<Node> sort(ArrayList<Node> list){
