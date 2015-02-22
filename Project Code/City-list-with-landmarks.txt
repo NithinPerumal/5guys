@@ -1,14 +1,16 @@
-Bangalore	150	200	85 Lal-Bagh	Cubbon-Park
+Bangalore	360	590	85 Lal-Bagh	Cubbon-Park
 **
-Chennai		490	160	75 Marina-Beach	Andavar-Temple
+Chennai		430	630	75 Marina-Beach	Andavar-Temple
 **
-Trivandrum	140	50	50 Trivandrum-Zoo	Kowdiar-Palace
+Trivandrum	350	680	50 Trivandrum-Zoo	Kowdiar-Palace
 **
-Agra		300 400	85 Taj-Mahal	Agra-Fort
+Agra		430 250	85 Taj-Mahal	Agra-Fort
 **
-Hyderabad	100	190 70 Charminar
+Hyderabad	450	550 70 Charminar
 **
-Delhi		300	350	80	Quatab-Minar	
+Delhi		370	260	80	Quatab-Minar	
 **
-Amritsar	400	300	90	Golden-Temple
+Amritsar	360	150	90	Golden-Temple
+**
+Mumbai		290	370	80	Gateway-of-India
 **
