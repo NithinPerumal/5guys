@@ -11,7 +11,6 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 
 public class mapPanel extends JComponent {
 	ArrayList<Node> list;
