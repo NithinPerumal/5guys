@@ -27,6 +27,15 @@ public class Graph {
 		PriorityQueueGraph<Route> fin = new PriorityQueueGraph<Route>();
 //		System.out.println("neighbors size"+ start.neighbors.size());
 		// get the neighbor nodes
+		ArrayList<Route> possibles= new ArrayList<Route>();
+		for(Route r: possibles){
+			if(r.getList().get(r.getList().size()-1).name.equals(finish))
+				fin.add(r);
+		}
+		
+		
+		
+		
 		for (Node n : start.getNeighbors()) {
 		
 			if (start == root) { // if this start is equal to the first clicked
@@ -57,7 +66,6 @@ public class Graph {
 					for (Route r : fin) {
 						r.getList().add(n); // add each node to their routes,
 											// not update cost
-						new Graph(root, n, finish).addRoutes();
 						r.updateCost(start.getDistCost(n)); // update cost				
 					}
 				else {
@@ -77,6 +85,21 @@ public class Graph {
 		}
 		
 		return fin;
+	}
+	public ArrayList<Route> options(Node n){
+		ArrayList<Route> temp= new ArrayList<Route>();
+		while(n!=finish){
+			for(Node t: n.neighbors){
+				if(n==this.root){
+					
+				}else{
+					temp.addAll(options(t));
+				}
+			}
+				
+		}
+		return temp;
+		
 	}
 
 //	PriorityQueue<Route> routes = new PriorityQueue<Route>();
