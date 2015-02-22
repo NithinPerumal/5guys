@@ -28,8 +28,9 @@ public class Graph {
 //		System.out.println("neighbors size"+ start.neighbors.size());
 		// get the neighbor nodes
 		ArrayList<Route> possibles= new ArrayList<Route>();
+		possibles=options(start);
 		for(Route r: possibles){
-			if(r.getList().get(r.getList().size()-1).name.equals(finish))
+			if(r.getList().get(r.getList().size()-1).name.equals(finish.name))
 				fin.add(r);
 		}
 		
@@ -88,7 +89,8 @@ public class Graph {
 	}
 	public ArrayList<Route> options(Node n){
 		ArrayList<Route> temp= new ArrayList<Route>();
-		while(n!=finish){
+		if(n==finish)
+			return temp;
 			for(Node t: n.neighbors){
 				if(n==this.root){
 					
@@ -97,7 +99,7 @@ public class Graph {
 				}
 			}
 				
-		}
+		
 		return temp;
 		
 	}
