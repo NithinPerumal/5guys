@@ -32,22 +32,22 @@ public class Reader {
 		// int count = 1;
 		// System.out.println(newReader.distanceMap.keySet().size());
 		// int i = 0;
-		for (int i = 0; i < newReader.cities.size(); i++) {
-			System.out.println("MAIN KEYSET "
-					+ newReader.cities.get(i).distMap.keySet());
-			for (Node name : newReader.cities) {
-				// System.out.println(count);
-				// String key = name.name;
-				// Integer value = newReader.distanceMap.get(name);
-				// Integer value = newReader.cities.get(i).distMap.get(key);
-				// System.out.println("MAINTEST " + key + " : " + value);
-
-				System.out.println("Main VALUES "
-						+ newReader.cities.get(i).distMap.get(name));
-			}
-			// count++;
-			// i++;
-		}
+//		for (int i = 0; i < newReader.cities.size(); i++) {
+//			System.out.println("MAIN KEYSET "
+//					+ newReader.cities.get(i).distMap.keySet());
+//			for (Node name : newReader.cities) {
+//				// System.out.println(count);
+//				// String key = name.name;
+//				// Integer value = newReader.distanceMap.get(name);
+//				// Integer value = newReader.cities.get(i).distMap.get(key);
+//				// System.out.println("MAINTEST " + key + " : " + value);
+//
+//				System.out.println("Main VALUES "
+//						+ newReader.cities.get(i).distMap.get(name));
+//			}
+//			// count++;
+//			// i++;
+//		}
 
 	}
 
@@ -192,10 +192,10 @@ public class Reader {
 							if (tokens[1].equals(this.cities.get(k).name)) {
 								this.distanceMap.put(this.cities.get(k),
 										Integer.parseInt(tokens[2]));
-								System.out.println("CITIES "
-										+ this.cities.get(k));
-								System.out.println("tokens[2] "
-										+ Integer.parseInt(tokens[2]));
+//								System.out.println("CITIES "
+//										+ this.cities.get(k));
+//								System.out.println("tokens[2] "
+//										+ Integer.parseInt(tokens[2]));
 								// System.out.println(this.distanceMap.get(cities.get(k)));
 								// System.out.println("distance : " +
 								// distanceMap.get(this.cities.get(k)));
