@@ -3,6 +3,7 @@ Bangalore	Trivandrum	90
 Bangalore	Amritsar	400
 Bangalore	Hyderabad	50
 Bangalore   Mumbai		300
+Bangalore	Kolkata		450
 **
 Agra		Delhi			120
 **
@@ -17,10 +18,24 @@ Trivandrum	Bangalore	90
 **
 Delhi		Amritsar		160
 Delhi		Agra			120
+Delhi		Shimla			70
+Delhi		Shillong		300
 **
 Amritsar	Bangalore		400
 Amritsar	Delhi			160
+Amritsar	Shimla			180
 **
 Mumbai		Bangalore		300
 Mumbai		Hyderabad		280
+Mumbai		Kolkata			300
+**
+Kolkata		Mumbai			300
+Kolkata		Bangalore		450
+Kolkata		Shillong		400
+**
+Shimla		Delhi			70
+Shimla		Amritsar		180
+**
+Shillong	Delhi			300
+Shillong	Kolkata			400
 **

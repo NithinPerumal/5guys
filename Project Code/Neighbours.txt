@@ -1,15 +1,22 @@
-Bangalore	Chennai		Trivandrum	Amritsar	Hyderabad
+Bangalore	Chennai		Trivandrum	Amritsar	Hyderabad	Mumbai	Raipur
 **
 Agra		Delhi
 **
-Hyderabad	Bangalore
+Hyderabad	Bangalore	Mumbai	Raipur
 **
 Chennai		Trivandrum	Bangalore
 **
 Trivandrum	Bangalore	Chennai
 **
-Delhi		Amritsar	Agra
+Delhi		Amritsar	Agra	Shimla	Shillong	Raipur
 **
-Amritsar	Bangalore	Delhi
+Amritsar	Bangalore	Delhi	Shimla
 **
-Mumbai		Bangalore	Hyderabad
+Mumbai		Bangalore	Hyderabad	Kolkata
+**
+Kolkata		Mumbai		Bangalore	Shillong	Raipur
+**
+Shimla		Delhi		Amritsar
+**
+Shillong 	Delhi		Kolkata
+**

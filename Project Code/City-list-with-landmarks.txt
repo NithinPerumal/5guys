@@ -8,9 +8,15 @@ Agra		430 250	85 Taj-Mahal	Agra-Fort
 **
 Hyderabad	450	550 70 Charminar
 **
-Delhi		370	260	80	Quatab-Minar	
+Delhi		350	280	80	Quatab-Minar	
 **
 Amritsar	360	150	90	Golden-Temple
 **
-Mumbai		290	370	80	Gateway-of-India
+Mumbai		290	420	80	Gateway-of-India	Pagoda		Sanjay-Gandhi-National-Park
+**
+Kolkata		600	400	70	Eden-Gardens
+**
+Shimla		390	230	73	The-Ridge	
+**
+Shillong	730	300	40	Hills
 **
