@@ -31,24 +31,19 @@ public class topBar {
 		JMenuItem itemt = new JMenuItem("Trip Planner");
 		itemt.setBackground(Color.BLACK);
 		itemt.setForeground(Color.RED);
-		JMenuItem itemm3 = new JMenuItem("City");
+		JMenuItem itemm3 = new JMenuItem("Search");
 		itemm3.setBackground(Color.BLACK);
 		itemm3.setForeground(Color.RED);
-		JMenuItem itemm32 = new JMenuItem("Path");
-		itemm32.setBackground(Color.BLACK);
-		itemm32.setForeground(Color.RED);
 		
 		menu.addActionListener(listener);
 		menu2.addActionListener(listener);
 		item.addActionListener(listener);
 		itemt.addActionListener(listener);
 		itemm3.addActionListener(listener);
-		itemm32.addActionListener(listener);
 		
 		menu.add(item);
 		menu2.add(itemt);
 		menu3.add(itemm3);
-		menu3.add(itemm32);
 		menubar.add(menu);
 		menubar.add(menu2);
 		menubar.add(menu3);

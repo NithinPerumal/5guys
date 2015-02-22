@@ -53,8 +53,8 @@ public class PlannerFrame {
 					back.add(sidePanel, BorderLayout.LINE_END);
 					back.validate();
 				}
-				if (name == "City"){
-					search1Panel search1 = new search1Panel(cities);
+				if (name == "Search"){
+					searchPanel search1 = new searchPanel(cities);
 					back.remove(sidePanel);
 					sidePanel.removeAll();
 					sidePanel.add(search1.side);
@@ -69,20 +69,8 @@ public class PlannerFrame {
 					back.add(sidePanel, BorderLayout.LINE_END);
 					back.validate();
 				}
-				if (name == "Path"){
-					search2panel search2 = new search2panel();
-					back.remove(sidePanel);
-					sidePanel.removeAll();
-					sidePanel.add(search2.side);
-					back.add(sidePanel, BorderLayout.LINE_END);
-					back.validate();
-				}
 			}
 		};
-		
-//		search2panel search2 = new search2panel();
-//		back.add(search2.side, BorderLayout.LINE_END);
-		
 		
 		topBar menuBar = new topBar(topBarListener);
 		back.add(menuBar.menubar, BorderLayout.NORTH);

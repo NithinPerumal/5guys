@@ -55,12 +55,15 @@ public class mapPanel extends JComponent {
 				int xDiff = ((int)list.get(i).getXCoord()+7 +(int)neighbors.get(j).getXCoord()+7) / 2 ;
 				int yDiff = ((int)list.get(i).getYCoord()+10+ (int)neighbors.get(j).getYCoord()+10) / 2;
 				HashMap<Node, Integer> distances = list.get(i).distMap;
-				g2.setColor(Color.WHITE);
-				g.drawString(distances.get(neighbors.get(j)).toString(), xDiff, yDiff);
+				g2.setColor(Color.RED);
+//				g.drawString(distances.get(neighbors.get(j)).toString(), xDiff+5, yDiff);
 			}
-			list.get(i).draw(g2, 15);
+			
+		}
+		for (int k=0; k<list.size(); k++){
+			list.get(k).draw(g2, 15);
 			g2.setColor(Color.WHITE);
-			g.drawString(list.get(i).name, (int)list.get(i).getXCoord(), (int)list.get(i).getYCoord() + 30);
+			g.drawString(list.get(k).name, (int)list.get(k).getXCoord(), (int)list.get(k).getYCoord() + 30);
 		}
 	}
 	
