@@ -54,17 +54,15 @@ public class homePanel {
 				Node node1 = sel.get(0);
 				Node node2 = sel.get(1);
 				if (node1 != null && node2 != null){
-					System.out.println("got here");
 					Graph finder = new Graph(node1, node1, node2);
-					ArrayList<Node> visited = new ArrayList<Node>();
-					ArrayList<Node> route = new ArrayList<Node>();
-//					finder.findRoute(visited, node1, route);
-					route = finder.bestPath();
+					ArrayList<Node> route = finder.bestPath();
 //					System.out.println("da answer is" + route.toString());
 //					Route r = new Route(node1,node2);
 //					route=r.createPaths();
 					String temp = "";
+					System.out.println(route.size());
 					for (int j=0; j<route.size(); j++){
+						System.out.println(route.get(j));
 						temp = temp + route.get(j) +"\n";
 					}
 					textArea1.setText(temp);
