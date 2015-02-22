@@ -22,7 +22,7 @@ public class search2panel {
 		distance.setForeground(Color.RED);
 		group.add(distance);
 		side.add(distance);
-		JRadioButton time = new JRadioButton("time");
+		JRadioButton time = new JRadioButton("Interestingness");
 		time.setBackground(Color.BLACK);
 		time.setForeground(Color.RED);
 		group.add(time);

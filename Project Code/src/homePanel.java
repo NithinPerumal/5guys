@@ -37,7 +37,7 @@ public class homePanel {
 		Border border1 = BorderFactory.createLineBorder(Color.red);
 		textArea.setBorder(border1);
 		side.add(textArea);
-		String paths = "This is a test here \n is a path a whole new \n path maybe another";
+		String paths = "";
 		final JTextArea textArea1 = new JTextArea(paths, 10, 10);
 		//JScrollPane scrollPane = new JScrollPane(textArea); 
 		textArea1.setEditable(false);
